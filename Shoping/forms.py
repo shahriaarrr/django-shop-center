@@ -57,13 +57,13 @@ class RegisterForm(forms.Form):
             raise forms.ValidationError('User is taken')
         return userName
 
-    # # baraye check kardane email tekrari.
-    # def clean_email(self):
-    #     email = self.cleaned_data.get('email')
-    #     filter_email = User.objects.filter(email=email)
-    #     if filter_email.exists():
-    #         raise forms.ValidationError('Email is taken')
-    #     return email
+    # baraye check kardane email tekrari.
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        filter_email = User.objects.filter(email=email)
+        if filter_email.exists():
+            raise forms.ValidationError('Email is taken')
+        return email
 
 
     # # baraye check kardan password tekrari
