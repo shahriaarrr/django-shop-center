@@ -71,7 +71,6 @@ def login_page(request):
 # baraye in ke az methodesh vaseye sakht user jadid estefate bshe bayad import beshe 
 # from django.contrib.auth import get_user_model
 #get_user_model.objects.create_user(username,email,password)
-
 User = get_user_model()
 def register_page(request):
     register_form = RegisterForm(request.POST or None)
