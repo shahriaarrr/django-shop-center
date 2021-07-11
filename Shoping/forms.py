@@ -66,14 +66,14 @@ class RegisterForm(forms.Form):
         return email
 
 
-    # # baraye check kardan password tekrari
-    # def clean(self):
-    #     data = self.cleaned_data
-    #     pass1 = self.cleaned_data.get('password')
-    #     pass2 = self.cleaned_data.get('confirm_password')
+    # baraye check kardan password tekrari
+    def clean(self):
+        data = self.cleaned_data
+        pass1 = self.cleaned_data.get('password')
+        pass2 = self.cleaned_data.get('confirm_password')
 
-    #     if len(pass1) < 6:
-    #         raise forms.ValidationError('length is small')
-    #         if pass1 != pass2:
-    #             raise forms.ValidationError('Password must match')
-    #     return data
+        if len(pass1) < 6:
+            raise forms.ValidationError('length is small')
+            if pass1 != pass2:
+                raise forms.ValidationError('Password must match')
+        return data
