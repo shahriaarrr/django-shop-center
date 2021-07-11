@@ -72,7 +72,7 @@ def login_page(request):
 # from django.contrib.auth import get_user_model
 #get_user_model.objects.create_user(username,email,password)
 
-# User = get_user_model()
+User = get_user_model()
 def register_page(request):
     register_form = RegisterForm(request.POST or None)
     context = {
@@ -80,12 +80,12 @@ def register_page(request):
     }
 
     # # baraye sakhtane user jadid 
-    # if register_form.is_valid():
-    #     Username = register_form.cleaned_data.get('userName')
-    #     Email = register_form.cleaned_data.get('email')
-    #     Password = register_form.cleaned_data.get('password')
-    #     User.objects.create_user(username=Username,email=Email,password=Password)
-    #     return redirect('Shoping:home')
+    if register_form.is_valid():
+        Username = register_form.cleaned_data.get('userName')
+        Email = register_form.cleaned_data.get('email')
+        Password = register_form.cleaned_data.get('password')
+        User.objects.create_user(username=Username,email=Email,password=Password)
+        return redirect('Shoping:home')
 
 
 
