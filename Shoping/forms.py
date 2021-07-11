@@ -49,13 +49,13 @@ class RegisterForm(forms.Form):
         widget=forms.PasswordInput(attrs={'class':'form-control text-center','placeholder':'Enter password again'})
     )
 
-    # # baraye check kardan username tekrari.
-    # def clean_userName(self):
-    #     userName = self.cleaned_data.get('userName')
-    #     filter_name = User.objects.filter(username=userName)
-    #     if filter_name.exists():
-    #         raise forms.ValidationError('User is taken')
-    #     return userName
+    # baraye check kardan username tekrari.
+    def clean_userName(self):
+        userName = self.cleaned_data.get('userName')
+        filter_name = User.objects.filter(username=userName)
+        if filter_name.exists():
+            raise forms.ValidationError('User is taken')
+        return userName
 
     # # baraye check kardane email tekrari.
     # def clean_email(self):
