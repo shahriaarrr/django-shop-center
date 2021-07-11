@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<div class="container">
+    <div class="d-flex justify-content-center my-5">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{registerform}}
+            <input type="submit" class="my-3 btn btn-warning btn-sm btn-block w-100">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,13 +1,17 @@
 import django
+from django.db import reset_queries
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django import forms
 
 # imports forms.py
-from .forms import ContactForm,LoginForm
+from .forms import ContactForm,LoginForm,RegisterForm
 
 # imports for user
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,get_user_model  # <-- register (get_user_model)
+
+
+
 
 
 # -----------------------------
@@ -18,8 +22,6 @@ def Home_page(request):
     }
     return render(request,'home.html',context)
 # -----------------------------
-    
-
 def contact_page(request):
     contact_form = ContactForm(request.POST or None)
     if contact_form.is_valid():
@@ -31,10 +33,6 @@ def contact_page(request):
         'contactform':contact_form
     }
     return render(request,'view.html',context)
-# -----------------------------
-
-
-
 # -----------------------------
 def login_page(request):
     login_form = LoginForm(request.POST or None)
@@ -68,9 +66,27 @@ def login_page(request):
 
     return render(request,'login.html',context)
 
-
-
-
 # -----------------------------
+
+# baraye in ke az methodesh vaseye sakht user jadid estefate bshe bayad import beshe 
+# from django.contrib.auth import get_user_model
+#get_user_model.objects.create_user(username,email,password)
+
+# User = get_user_model()
 def register_page(request):
-    return render(request,'register.html',{})
+    register_form = RegisterForm(request.POST or None)
+    context = {
+        'registerform':register_form
+    }
+
+    # # baraye sakhtane user jadid 
+    # if register_form.is_valid():
+    #     Username = register_form.cleaned_data.get('userName')
+    #     Email = register_form.cleaned_data.get('email')
+    #     Password = register_form.cleaned_data.get('password')
+    #     User.objects.create_user(username=Username,email=Email,password=Password)
+    #     return redirect('Shoping:home')
+
+
+
+    return render(request,'register.html',context)
