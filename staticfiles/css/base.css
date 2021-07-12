@@ -1,8 +1,10 @@
 body{
-    background-image: url('../images/30_nologo.jpg');
+    /* background-image: url('../images/30_nologo.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: fixed; */
+    background-image: linear-gradient(to right,#382653,#485563);
+    /* background-color: #382653; */
 }
 
 ul{
@@ -11,7 +13,9 @@ ul{
 }
 
 ul .nav-link{
-    color: black;
+    font-family: cursive;
+    color: #fff;
     margin-left: 15px;
+    font-size: 15px;
 }
 
