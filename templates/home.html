@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block body %}
-
+<link rel="stylesheet" href="{% static 'css/home.css' %}">    
 <div class="container">
     <div class="d-flex justify-content-center my-5">
         {% if user.is_authenticated %}
@@ -10,6 +12,7 @@
             <a href="{% url 'Shoping:login' %}" class="btn btn-warning my-3 btn-sm btn-block w-25">Login</a>
 
         {% endif %}
+        
     </div>
     
 </div>

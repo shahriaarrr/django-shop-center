@@ -1,0 +1,17 @@
+body{
+    background-image: url('../images/30_nologo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+ul{
+    background-color:rgba(252, 252, 252, 0);
+    /* border-radius: 15px; */
+}
+
+ul .nav-link{
+    color: black;
+    margin-left: 15px;
+}
+

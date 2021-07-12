@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block body %}
-
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
 <div class="container">
-    <div class="d-flex justify-content-center my-5">
+    <div class="login-row my-5">
         <form action="" method="POST">
             {% csrf_token %}
             {{loginform}}
-            <input type="submit" class="btn btn-warning my-3 btn-sm btn-block">
+            <input type="submit" class="btn my-3">
         </form>
     </div>
 </div>

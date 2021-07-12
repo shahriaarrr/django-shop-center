@@ -1,0 +1,33 @@
+.register-row{
+    display: flex;
+    justify-content: center;
+}
+input[type='text']{
+    background-color: none;
+    border: none;
+    width: 400px;
+
+}
+label{
+    margin: 10px;
+    font-family: cursive;
+}
+input{
+    font-family: cursive;
+}
+.btn{
+    margin-top: 10px;
+    background-color: none;
+    width: 100%;
+    margin-top: 50px;
+    border: 1px #ffc400e1 solid;
+    background-color: rgba(131, 131, 131, 0);
+}
+
+.btn:hover{
+    transition: .5s;
+    background-color:  #ffc400e1;
+
+}
+
+/* btn-warning my-3 btn-sm btn-block */
