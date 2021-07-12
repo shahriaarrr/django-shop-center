@@ -1,21 +1,22 @@
-body{
-    /* background-image: url('../images/30_nologo.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed; */
-    background-image: linear-gradient(to right,#382653,#485563);
-    /* background-color: #382653; */
-}
+
+
 
 ul{
     background-color:rgba(252, 252, 252, 0);
     /* border-radius: 15px; */
+    border-bottom: 1px #ffc400e1 solid;
 }
 
 ul .nav-link{
     font-family: cursive;
-    color: #fff;
+    color: #000;
     margin-left: 15px;
     font-size: 15px;
+    transition: .5s;
+
+}
+
+ul .nav-link:hover{
+    background-color: #ffbb00e7;
 }
 

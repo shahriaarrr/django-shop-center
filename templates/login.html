@@ -4,12 +4,16 @@
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
 <div class="container">
-    <div class="login-row my-5">
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{loginform}}
-            <input type="submit" class="btn my-3">
-        </form>
+    <div class="row login-row d-flex justify-content-center">
+        <div class="col-md-6 col-12 col-sm-12">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{loginform}}
+                <br>
+                <input type="submit" class="button btn bg-warning my-5">
+            </form>
+        </div>
+        
     </div>
 </div>
 

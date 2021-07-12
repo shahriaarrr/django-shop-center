@@ -2,7 +2,7 @@ from django import forms
 from django.forms.fields import CharField
 from django.forms.forms import Form
 from django.utils.html import WRAPPING_PUNCTUATION
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model,authenticate
 
 # baraye check kardan email va username tekrari bayad import beshe ta az mothode filteresh estefade bshe.
 User = get_user_model()
@@ -23,30 +23,37 @@ class ContactForm(forms.Form):
 # baraye ijad form login dar safheye login.html
 class LoginForm(forms.Form):
     userName = forms.CharField(
-        widget=forms.TextInput(attrs={'class':'form-control text-center','placeholder':'Enter Your name'})
+        widget=forms.TextInput(attrs={'class':'text-center','placeholder':'Enter your Name'})
     )
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class':'form-control text-center','placeholder':'Enter You password'})
+        widget=forms.PasswordInput(attrs={'class':'text-center','placeholder':'Enter you Password'})
     )
+
+    def clean(self):
+        username = self.cleaned_data.get('userName')
+        password = self.cleaned_data.get('password')
+        user = authenticate(username=username,password=password)
+        if user is None:
+            raise forms.ValidationError('User has not exists!')
 
 
 # baraye ijad form register dar safheye register.html
 class RegisterForm(forms.Form):
     userName = forms.CharField(
         label='Username',
-        widget=forms.TextInput(attrs={'class':'form-control text-center','placeholder':'Enter Your name'})
+        widget=forms.TextInput(attrs={'class':'text-center','placeholder':'Enter your name'})
     )
     email = forms.EmailField(
         label='Email',
-        widget=forms.EmailInput(attrs={'class':'form-control w-100 text-center','placeholder':'Enter Your Email'})
+        widget=forms.EmailInput(attrs={'class':'text-center','placeholder':'Enter your Email'})
     )
     password = forms.CharField(
         label='Password',
-        widget=forms.PasswordInput(attrs={'class':'form-control text-center','placeholder':'Enter password'})
+        widget=forms.PasswordInput(attrs={'class':'text-center','placeholder':'Enter your Password'})
     )
     confirm_password = forms.CharField(
         label='Confirm',
-        widget=forms.PasswordInput(attrs={'class':'form-control text-center','placeholder':'Enter password again'})
+        widget=forms.PasswordInput(attrs={'class':'text-center','placeholder':'Enter your confirm Password'})
     )
 
     # baraye check kardan username tekrari.
