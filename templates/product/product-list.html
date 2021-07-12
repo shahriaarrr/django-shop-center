@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+
+
+
+<div class="container">
+    <h1 class="text-warning">Product-list</h1>
+    <div class="list-row my-5">
+        {% for ol in object_list %}
+            <h2 class="text-light">{{ol.title}}</h2>
+            <p class="text-info">{{ ol.description }}</p>
+            <span class="text-info">{{ ol.price }}</span>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

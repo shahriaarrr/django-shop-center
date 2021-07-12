@@ -10,6 +10,12 @@ from .forms import ContactForm,LoginForm,RegisterForm
 # imports for user
 from django.contrib.auth import authenticate,login,get_user_model  # <-- register (get_user_model)
 
+# class views
+from django.views.generic import ListView
+
+# imports Product -> models.py
+from .models import Product
+
 
 
 
@@ -65,9 +71,7 @@ def login_page(request):
 
 
     return render(request,'login.html',context)
-
 # -----------------------------
-
 # baraye in ke az methodesh vaseye sakht user jadid estefate bshe bayad import beshe 
 # from django.contrib.auth import get_user_model
 #get_user_model.objects.create_user(username,email,password)
@@ -84,8 +88,21 @@ def register_page(request):
         Email = register_form.cleaned_data.get('email')
         Password = register_form.cleaned_data.get('password')
         User.objects.create_user(username=Username,email=Email,password=Password)
-        return redirect('Shoping:home')
-
-
+        return redirect('Shoping:login')
 
     return render(request,'register.html',context)
+# -----------------------------
+def product_list_view(request):
+    products = Product.objects.all()
+    context = {
+        'products':products
+    }
+    return render(request,'product/product-list.html',context)
+# -----------------------------
+
+class ProductListView(ListView):
+    queryset = Product.objects.all()
+    template_name = 'product/product-list.html'
+
+    # def get_context_data(self, **kwargs):
+    #     return super().get_context_data(**kwargs)
