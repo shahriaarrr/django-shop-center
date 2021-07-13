@@ -1,0 +1,19 @@
+.card-detail {
+    border: 1px #ffc400e1 solid;
+
+}
+
+.card-detail img{
+    width: 100%;
+}
+
+.card-detail h2{
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+
+.container a{
+    width: 100px;
+    border-radius: 50px;
+}
