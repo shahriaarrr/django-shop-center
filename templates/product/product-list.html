@@ -8,13 +8,25 @@
 
 <div class="container">
     <h1 class="text-center text-warning">Product-list</h1>
-    <div class="list-row my-5">
+    <div class="row list-row my-5">
         {% for ol in object_list %}
-            <div class="">
+            <div class="card-list col-md-4 col-12">
                 <h2 class="text-dark">{{ol.title}}</h2>
-                <p class="text-dark">{{ ol.description }}</p>
+                <p class="text-dark">{{ ol.snippet }}</p>
                 <span class="text-success">{{ ol.price }}</span>
+                <a href="{% url 'Shoping:ProductDetail' ol.pk %}" class="btn btn-warning btn-sm btn-block">View</a>
             </div>
+
+            <!-- <div class=" col-md-3 justify-content-center col-lg-3 col-sm-6 col-12">
+                <div class="card border-warning mb-3" style="max-width: 19rem; min-height: 15rem;">
+                    <div class="card-header text-success">{{ ol.price }}</div>
+                    <div class="card-body text-warning">
+                      <h5 class="card-title">{{ol.title}}</h5>
+                      <p class="card-text text-dark">{{ ol.snippet }}</p>
+                    </div>
+                    <a href="{% url 'Shoping:ProductDetail' ol.pk %}" class="btn btn-outline-warning btn-sm btn-block">View</a>
+                </div>
+            </div> -->
         {% endfor %}
     </div>
 </div>

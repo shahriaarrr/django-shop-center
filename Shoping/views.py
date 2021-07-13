@@ -1,6 +1,6 @@
 import django
 from django.db import reset_queries
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_list_or_404
 from django.http import HttpResponse
 from django import forms
 
@@ -12,11 +12,10 @@ from django.contrib.auth import authenticate,login,get_user_model  # <-- registe
 
 # class views
 from django.views.generic import ListView
+from django.views.generic import DetailView
 
 # imports Product -> models.py
 from .models import Product
-
-
 
 
 
@@ -99,10 +98,26 @@ def product_list_view(request):
     }
     return render(request,'product/product-list.html',context)
 # -----------------------------
-
+# class list
 class ProductListView(ListView):
     queryset = Product.objects.all()
     template_name = 'product/product-list.html'
 
     # def get_context_data(self, **kwargs):
     #     return super().get_context_data(**kwargs)
+# -----------------------------
+def product_detail_view(request,pk):
+    # handel error 404
+    product = get_list_or_404(Product,id=pk)
+
+    product = Product.objects.get(id=pk)
+    context = {
+        'product':product
+    }
+    return render(request,'product/produvt-detail.html',context)
+
+
+# class detail
+# class ProductDetailView(DetailView,id):
+#     queryset = Product.objects.get()
+#     template_name = 'product/produvt-detail.html'

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="my-5 container">
+    <div class="col-12 col-md-12 card card-body text-center">
+        <h2 class="text-warning">{{product.title}}</h2>
+        <p class="text-dark">{{product.description}}</p>
+        <span class="text-success">{{ product.price }}</span>   
+    </div>
+
+    <a href="{% url 'Shoping:ProductList' %}" class="my-3 btn btn-danger btn-sm">Back</a>
+
+</div>
+
+
+{% endblock %}

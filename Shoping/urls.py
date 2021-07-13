@@ -13,5 +13,8 @@ urlpatterns = [
 
     # products
     # path('product-list/',views.product_list_view,name='ProductList'),  #--> with function base
-    path('Product-list/',views.ProductListView.as_view(),name='ProductList')
+    path('Product-list/',views.ProductListView.as_view(),name='ProductList'),
+
+    path('product-detail/<int:pk>',views.product_detail_view,name='ProductDetail'), 
+    # path('Product-detail/',views.ProductDetailView.as_view(),name='ProductDetail')
 ]
