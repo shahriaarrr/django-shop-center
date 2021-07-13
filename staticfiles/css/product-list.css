@@ -1,0 +1,40 @@
+
+.card-list img{
+    width: 100%;
+    min-height: 100px;
+    height: 180px;
+    max-height: 200px;
+    border-radius: 8px;
+    border: 1px #000 solid;   
+}
+
+.card-list h2{
+    font-size: 20px;
+    margin-top: 5px;
+}
+.card-list p{
+    font-size: 13px;
+}
+
+.card-list span{
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.card-list {
+    
+    max-width: 100%;
+
+    border: 1px #ffc400e1 solid;
+    padding: 15px;
+    /* border-radius: 15px; */
+}
+
+.row{
+    margin: 0 10px;
+}
+
+.card-list a{
+    margin-top: 10px;
+    border-radius: 50px;
+}
