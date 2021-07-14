@@ -20,7 +20,7 @@ from .models import Product
 
 
 # -----------------------------
-def Home_page(request):
+def Home_page(request): 
     name = 'yaisn esmaeili'
     context = {
         'name':name
