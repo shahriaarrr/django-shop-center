@@ -8,7 +8,7 @@ from django import forms
 from .forms import ContactForm,LoginForm,RegisterForm
 
 # imports for user
-from django.contrib.auth import authenticate,login,get_user_model  # <-- register (get_user_model)
+from django.contrib.auth import authenticate,login,get_user_model,logout  # <-- register (get_user_model)
 
 # class views
 from django.views.generic import ListView
@@ -71,6 +71,13 @@ def login_page(request):
 
     return render(request,'login.html',context)
 # -----------------------------
+def logout_page(request):
+    if request.method == 'POST':
+        logout(request)
+        
+        return redirect('Shoping:home')
+    return render(request, 'logout.html',{})
+
 # baraye in ke az methodesh vaseye sakht user jadid estefate bshe bayad import beshe 
 # from django.contrib.auth import get_user_model
 #get_user_model.objects.create_user(username,email,password)

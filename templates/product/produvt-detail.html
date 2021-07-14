@@ -6,7 +6,7 @@
 <div class="container">
     <link rel="stylesheet" href="{% static 'css/product-detail.css' %}">
     <h1 class="text-center text-warning">Product-detail</h1>
-    <a href="{% url 'Shoping:ProductList' %}" class="my-3 btn btn-danger btn-sm">Back</a>
+    <a href="{% url 'Shoping:ProductList' %}" class="button my-3 btn btn-danger btn-sm">Back</a>
     <div class="col-12 col-md-12 card card-body text-center card-detail my-5">
         <img src="{{ product.image.url }}" alt="">
         <h2 class="text-warning text-dark">{{product.title}}</h2>
