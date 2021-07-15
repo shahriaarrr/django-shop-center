@@ -4,12 +4,12 @@
 ul{
     background-color:rgba(252, 252, 252, 0);
     /* border-radius: 15px; */
-    border-bottom: 1px #ffc400e1 solid;
+    border-bottom: 1px #FF685B solid;
 }
 
 ul .nav-link{
     font-family: cursive;
-    color: #000;
+    color: #FF685B;
     margin-left: 15px;
     font-size: 15px;
     transition: .5s;
@@ -17,6 +17,7 @@ ul .nav-link{
 }
 
 ul .nav-link:hover{
-    background-color: #ffbb00e7;
+    background-color: #FF685B;
+    color: #fff;
 }
 

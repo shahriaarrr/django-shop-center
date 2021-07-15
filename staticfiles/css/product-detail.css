@@ -1,5 +1,5 @@
 .card-detail {
-    border: 1px #ffc400e1 solid;
+    border: 1px #FF685B solid;
 
 }
 
@@ -14,6 +14,13 @@
 
 
 .container .button{
-    width: 100px;
-    border-radius: 50px;
+    width: 150px;
+    border-radius: 1px;
+    border: 1px #FF685B solid;
+    color: #FF685B;
+}
+
+.container .button:hover{
+    background-color: #FF685B;
+    color: #fff;
 }

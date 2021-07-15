@@ -9,6 +9,8 @@ class Product(models.Model):
     image = models.ImageField(upload_to='image/',blank=True,null=True)
     # featured = models.BooleanField(default=False)
 
+    time = models.DateTimeField(auto_now_add=True,)
+
     def __str__(self):
         return self.title
 

@@ -10,7 +10,7 @@ input[type='text']{
     outline: none;
     border: none;
     background-color: rgba(255, 255, 255, 0);
-    border-bottom: 1px #ffc400e1 solid; 
+    border-bottom: 1px #FF685B solid; 
     font-family: cursive;
 }
 
@@ -23,7 +23,7 @@ input[type='password']{
     border: none;
     background-color: rgba(255, 255, 255, 0);
     font-family: cursive;
-    border-bottom: 1px #ffc400e1 solid; 
+    border-bottom: 1px #FF685B solid; 
 }
 
 label{
@@ -34,7 +34,13 @@ label{
 .button{
     width: 100%;  
     font-family: cursive;
-    border-radius: 50px;
     font-size: 14px;
+    border: 1px #FF685B solid;
+    color: #FF685B;
+    border-radius: 1px;
 }
 
+.button:hover{
+    background-color: #FF685B;
+    color: #fff;
+}
