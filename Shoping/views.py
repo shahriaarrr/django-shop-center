@@ -40,6 +40,12 @@ def contact_page(request):
     return render(request,'view.html',context)
 # -----------------------------
 def login_page(request):
+
+    # agar user login bood dige page login ro neshon nade!
+    if request.user.is_authenticated:
+        return redirect('Shoping:home')
+
+
     login_form = LoginForm(request.POST or None)
 
     context = {
@@ -83,6 +89,11 @@ def logout_page(request):
 #get_user_model.objects.create_user(username,email,password)
 User = get_user_model()
 def register_page(request):
+
+    # agar user login bood dige page login ro neshon nade!
+    if request.user.is_authenticated:
+        return redirect('Shoping:home')
+
     register_form = RegisterForm(request.POST or None)
     context = {
         'registerform':register_form

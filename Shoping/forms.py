@@ -56,6 +56,8 @@ class RegisterForm(forms.Form):
         widget=forms.PasswordInput(attrs={'class':'text-center','placeholder':'Enter your confirm Password'})
     )
 
+    # remember = forms.BooleanField()
+
     # baraye check kardan username tekrari.
     def clean_userName(self):
         userName = self.cleaned_data.get('userName')
