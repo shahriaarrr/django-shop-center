@@ -133,9 +133,3 @@ def product_detail_view(request,pk):
         'product':product
     }
     return render(request,'product/produvt-detail.html',context)
-
-
-# class detail
-# class ProductDetailView(DetailView,id):
-#     queryset = Product.objects.get()
-#     template_name = 'product/produvt-detail.html'
