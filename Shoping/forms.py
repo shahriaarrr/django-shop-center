@@ -3,6 +3,7 @@ from django.forms.fields import CharField
 from django.forms.forms import Form
 from django.utils.html import WRAPPING_PUNCTUATION
 from django.contrib.auth import get_user_model,authenticate
+from django.core import validators
 
 # baraye check kardan email va username tekrari bayad import beshe ta az mothode filteresh estefade bshe.
 User = get_user_model()
@@ -29,7 +30,7 @@ class LoginForm(forms.Form):
         widget=forms.PasswordInput(attrs={'class':'text-center','placeholder':'Enter you Password'})
     )
 
-    # def clean(self):
+    # def clean_userName(self):
     #     username = self.cleaned_data.get('userName')
     #     password = self.cleaned_data.get('password')
     #     user = authenticate(username=username,password=password)
@@ -41,11 +42,19 @@ class LoginForm(forms.Form):
 class RegisterForm(forms.Form):
     userName = forms.CharField(
         label='Username',
-        widget=forms.TextInput(attrs={'class':'text-center','placeholder':'Enter your name'})
+        widget=forms.TextInput(attrs={'class':'text-center','placeholder':'Enter your name'}),
+        validators=[
+            validators.MaxLengthValidator(limit_value=20,message='تعداد کاراکتر ها نمیتواند بیشتر از 20 باشد'),
+            validators.MinLengthValidator(limit_value=8,message='تعداد کاراکتر ها نمیتواند کم تر از 8 باشد')
+            
+            ]
     )
     email = forms.EmailField(
         label='Email',
-        widget=forms.EmailInput(attrs={'class':'text-center','placeholder':'Enter your Email'})
+        widget=forms.EmailInput(attrs={'class':'text-center','placeholder':'Enter your Email'}),
+        validators=[
+            validators.EmailValidator(message='ایمیل وارد شده صحیح نمیباشد')
+        ]
     )
     password = forms.CharField(
         label='Password',
@@ -63,7 +72,7 @@ class RegisterForm(forms.Form):
         userName = self.cleaned_data.get('userName')
         filter_name = User.objects.filter(username=userName)
         if filter_name.exists():
-            raise forms.ValidationError('User is taken')
+            raise forms.ValidationError('این نام کاربری وجود دارد')
         return userName
 
     # baraye check kardane email tekrari.
@@ -71,18 +80,19 @@ class RegisterForm(forms.Form):
         email = self.cleaned_data.get('email')
         filter_email = User.objects.filter(email=email)
         if filter_email.exists():
-            raise forms.ValidationError('Email is taken')
+            raise forms.ValidationError('ایمیل وجود دارد')
         return email
 
 
     # baraye check kardan password tekrari
-    def clean(self):
+    def clean_confirm_password(self):
         data = self.cleaned_data
         pass1 = self.cleaned_data.get('password')
         pass2 = self.cleaned_data.get('confirm_password')
 
-        if len(pass1) < 6:
-            raise forms.ValidationError('length is small')
-            if pass1 != pass2:
-                raise forms.ValidationError('Password must match')
+        if pass1 != pass2 :
+            raise forms.ValidationError('پسورد مغایرت دارد')
+        elif len(pass1) < 6:
+            raise forms.ValidationError('پسورد زیادی کوچک است')
         return data
+

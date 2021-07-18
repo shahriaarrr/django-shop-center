@@ -8,7 +8,28 @@
         <div class="col-md-6 col-12 col-sm-12">
             <form action="" method="POST">
                 {% csrf_token %}
-                {{registerform}}
+                <!-- {{registerform}} -->
+
+                {{registerform.userName}}
+                {% for error in registerform.userName.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+
+                {{registerform.email}}
+                {% for error in registerform.email.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+
+                {{registerform.password}}
+                {% for error in registerform.password.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+
+                {{registerform.confirm_password}}
+                {% for error in registerform.confirm_password.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+
                 <br>
                 <input type="submit" class="button btn my-5">
             </form>
