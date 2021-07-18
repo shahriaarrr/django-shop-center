@@ -29,12 +29,12 @@ class LoginForm(forms.Form):
         widget=forms.PasswordInput(attrs={'class':'text-center','placeholder':'Enter you Password'})
     )
 
-    def clean(self):
-        username = self.cleaned_data.get('userName')
-        password = self.cleaned_data.get('password')
-        user = authenticate(username=username,password=password)
-        if user is None:
-            raise forms.ValidationError('User has not exists!')
+    # def clean(self):
+    #     username = self.cleaned_data.get('userName')
+    #     password = self.cleaned_data.get('password')
+    #     user = authenticate(username=username,password=password)
+    #     if user is None:
+    #         raise forms.ValidationError('User has not exists!')
 
 
 # baraye ijad form register dar safheye register.html

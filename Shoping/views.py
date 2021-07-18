@@ -66,7 +66,7 @@ def login_page(request):
             context['loginform'] = LoginForm()
             return redirect('Shoping:home')
         else:
-            print('User has not exists!')
+            login_form.add_error('userName','❌ User has not Found ❌')
         
 
     # if request.user.is_authenticated:
