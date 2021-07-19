@@ -3,7 +3,7 @@ from django.db import models
 
 
 
-
+#To display the product in active or inactive mode
 class ProdctManager(models.Manager):
     def get_active_product(self):
         return self.get_queryset().filter(active=True)
