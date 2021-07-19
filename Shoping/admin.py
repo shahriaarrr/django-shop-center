@@ -4,7 +4,7 @@ from .models import Product
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['__str__','slug','title','price']
+    list_display = ['__str__','title','price']
     list_filter = ['title','price']
     
 

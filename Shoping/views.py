@@ -18,15 +18,17 @@ from django.views.generic import DetailView
 from .models import Product
 
 
-
 # -----------------------------
+
 def Home_page(request): 
     name = 'yaisn esmaeili'
     context = {
         'name':name
     }
     return render(request,'home.html',context)
+
 # -----------------------------
+
 def contact_page(request):
     contact_form = ContactForm(request.POST or None)
     if contact_form.is_valid():
@@ -38,16 +40,15 @@ def contact_page(request):
         'contactform':contact_form
     }
     return render(request,'view.html',context)
+
 # -----------------------------
+
 def login_page(request):
 
     # agar user login bood dige page login ro neshon nade!
     if request.user.is_authenticated:
         return redirect('Shoping:home')
-
-
     login_form = LoginForm(request.POST or None)
-
     context = {
         'loginform':login_form
     }
@@ -67,22 +68,19 @@ def login_page(request):
             return redirect('Shoping:home')
         else:
             login_form.add_error('userName','❌ User has not Found ❌')
-        
-
-    # if request.user.is_authenticated:
-    #     print('Yes')
-    # else:
-    #     return redirect('Shoping:contact')
-
 
     return render(request,'login.html',context)
+
 # -----------------------------
+
 def logout_page(request):
     if request.method == 'POST':
         logout(request)
         
         return redirect('Shoping:home')
     return render(request, 'logout.html',{})
+
+# -----------------------------
 
 # baraye in ke az methodesh vaseye sakht user jadid estefate bshe bayad import beshe 
 # from django.contrib.auth import get_user_model
@@ -108,22 +106,29 @@ def register_page(request):
         return redirect('Shoping:login')
 
     return render(request,'register.html',context)
+
 # -----------------------------
-def product_list_view(request):
+# def product_list_view(request):
     products = Product.objects.all()
     context = {
         'products':products
     }
     return render(request,'product/product-list.html',context)
 # -----------------------------
+
 # class list
 class ProductListView(ListView):
-    queryset = Product.objects.all()
+    # queryset = Product.objects.all()
     template_name = 'product/product-list.html'
+    
+    def get_queryset(self):
+        return Product.objects.get_active_product()
 
     # def get_context_data(self, **kwargs):
     #     return super().get_context_data(**kwargs)
+
 # -----------------------------
+
 def product_detail_view(request,pk):
     # handel error 404
     product = get_list_or_404(Product,id=pk)
