@@ -23,19 +23,19 @@
         <div class="btn-toolbar mb-3 my-5" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group mr-2" role="group" aria-label="First group">
                 {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-danger ">&laquo;</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="butto-n btn">&laquo;</a>
                 {% endif %}
 
                 {% for page in paginator.page_range %}
                     {% if page == page_obj.number %}
-                        <a href="?page={{page}}" class="btn btn-outline-danger active">{{page}}</a>
+                        <a href="?page={{page}}" class="butto-n btn active" style="background-color: #FF685B;">{{page}}</a>
                     {% else %}
-                        <a href="?page={{page}}" class="btn btn-outline-danger">{{page}}</a>
+                        <a href="?page={{page}}" class="butto-n btn ">{{page}}</a>
                     {% endif %}
                 {% endfor %}
 
                 {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-danger ">&raquo;</a>
+                <a href="?page={{ page_obj.next_page_number }}" class="butto-n btn">&raquo;</a>
                 {% endif %}
     
             </div>

@@ -49,3 +49,13 @@
     background-color: #FF685B;
     color: #fff;
 }
+
+.butto-n{
+    border: 1px #FF685B solid;
+    border-radius: 0px;
+}
+
+.butto-n:hover {
+    transition: .5s;
+    background-color: #FF685B;
+}
