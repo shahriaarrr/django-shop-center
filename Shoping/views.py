@@ -120,6 +120,7 @@ def register_page(request):
 class ProductListView(ListView):
     # queryset = Product.objects.all()
     template_name = 'product/product-list.html'
+    paginate_by = 3
     
     def get_queryset(self):
         return Product.objects.get_active_product()
