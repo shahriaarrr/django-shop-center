@@ -157,6 +157,8 @@ class SearchView(ListView):
     def get_queryset(self):
         request = self.request
         print(request)
+
+        #میگه اگر حر وارد شده برای سرچ برابر ود با کیو(q)
         qs = request.GET.get('q')
         if qs is not None:
             return Product.objects.filter(active=True,title__icontains=qs)
