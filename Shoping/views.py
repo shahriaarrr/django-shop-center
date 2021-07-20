@@ -1,7 +1,7 @@
 import django
 from django.db import reset_queries
 from django.shortcuts import render,redirect,get_list_or_404
-from django.http import HttpResponse
+from django.http import Http404, request
 from django import forms
 
 # imports forms.py
@@ -120,7 +120,7 @@ def register_page(request):
 class ProductListView(ListView):
     # queryset = Product.objects.all()
     template_name = 'product/product-list.html'
-    paginate_by = 3
+    paginate_by = 8
     
     def get_queryset(self):
         return Product.objects.get_active_product()
@@ -135,7 +135,16 @@ def product_detail_view(request,pk):
     product = get_list_or_404(Product,id=pk)
 
     product = Product.objects.get(id=pk)
-    context = {
-        'product':product
-    }
-    return render(request,'product/produvt-detail.html',context)
+
+    # برای اینکه اگر محصولی اکتیو نبود توی دیتیل ویو هم در یو ار ال نمایش داده نشود.
+    if product.active:
+        context = {
+            'product':product
+        }
+        return render(request,'product/produvt-detail.html',context)
+    else:
+        raise Http404('محصول مورد نظر یافت نشد')
+        # return redirect('Shoping:page-404')
+
+# def page_404(request):
+#     return render(request,'404.html')
