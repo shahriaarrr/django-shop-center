@@ -125,6 +125,24 @@ class ProductListView(ListView):
     def get_queryset(self):
         return Product.objects.get_active_product()
 
+# -----------------------------
+
+# for searching products
+class SearchView(ListView):
+    template_name = 'product/product-list.html'
+    paginate_by = 2
+
+    def get_queryset(self):
+        request = self.request
+
+        #میگه اگر حر وارد شده برای سرچ برابر ود با کیو(q)
+        qs = request.GET.get('q')
+        if qs is not None:
+            return Product.objects.filter(active=True,title__icontains=qs)
+        return Product.objects.get_active_product()
+
+        # __icontains -> فیلد هایی که شامل این مقدار هست
+        # __iexact -> فیلد هایی که دقیقا برابر با مقدار وارد شده است
 
 # -----------------------------
 
@@ -146,22 +164,4 @@ def product_detail_view(request,pk):
 
 # -----------------------------
 
-# for searching products
-class SearchView(ListView):
-    template_name = 'product/product-list.html'
-    paginate_by = 2
 
-    def get_queryset(self):
-        request = self.request
-        print(request)
-
-        #میگه اگر حر وارد شده برای سرچ برابر ود با کیو(q)
-        qs = request.GET.get('q')
-        if qs is not None:
-            return Product.objects.filter(active=True,title__icontains=qs)
-        return Product.objects.get_active_product()
-
-        # __icontains -> فیلد هایی که شامل این مقدار هست
-        # __iexact -> فیلد هایی که دقیقا برابر با مقدار وارد شده است
-
-# -----------------------------
