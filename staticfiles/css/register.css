@@ -53,3 +53,8 @@ label{
     background-color: #FF685B;
     color: #fff;
 }
+
+.register-row {
+    border: 1px #FF685B solid;
+    padding: 50px;
+}
