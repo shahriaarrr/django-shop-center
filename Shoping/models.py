@@ -32,3 +32,5 @@ class Product(models.Model):
     class Meta:
         verbose_name_plural = 'محصولات'  # --> for remove "s" on header page amdin
         verbose_name = 'محصولات'
+
+    

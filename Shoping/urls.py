@@ -20,4 +20,6 @@ urlpatterns = [
     # path('Product-detail/',views.ProductDetailView.as_view(),name='ProductDetail')
 
     # path('404-error/',views.page_404,name='page-404')
+
+    path('Product-list/search/',views.SearchView.as_view(),)
 ]
