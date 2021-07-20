@@ -95,4 +95,3 @@ class RegisterForm(forms.Form):
         elif len(pass1) < 6:
             raise forms.ValidationError('پسورد زیادی کوچک است')
         return data
-

@@ -109,24 +109,22 @@ def register_page(request):
 
 # -----------------------------
 # def product_list_view(request):
-    products = Product.objects.all()
-    context = {
-        'products':products
-    }
-    return render(request,'product/product-list.html',context)
+#     products = Product.objects.all()
+#     context = {
+#         'products':products
+#     }
+#     return render(request,'product/product-list.html',context)
 # -----------------------------
 
 # class list
 class ProductListView(ListView):
     # queryset = Product.objects.all()
     template_name = 'product/product-list.html'
-    paginate_by = 3
+    paginate_by = 4
     
     def get_queryset(self):
         return Product.objects.get_active_product()
 
-    # def get_context_data(self, **kwargs):
-    #     return super().get_context_data(**kwargs)
 
 # -----------------------------
 
@@ -146,8 +144,7 @@ def product_detail_view(request,pk):
         raise Http404('محصول مورد نظر یافت نشد')
         # return redirect('Shoping:page-404')
 
-# def page_404(request):
-#     return render(request,'404.html')
+# -----------------------------
 
 # for searching products
 class SearchView(ListView):
@@ -166,3 +163,5 @@ class SearchView(ListView):
 
         # __icontains -> فیلد هایی که شامل این مقدار هست
         # __iexact -> فیلد هایی که دقیقا برابر با مقدار وارد شده است
+
+# -----------------------------
