@@ -1,11 +1,13 @@
 {% block body %}
+{% load static %}
 
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
 <div class="d-flex justify-content-center">
     <div class="col-sm-6">
         <div class="search_box">
             <!-- action="search" -> search adress in url.py -->
             <form action="/Product-list/search" method="GET">
-                <input type="search" placeholder="Searching ... " class="form-control h-25" value="{{ request.GET.q }}" name="q">
+                <input type="search" placeholder="Searching ... " class="form-control-search h-25" value="{{ request.GET.q }}" name="q">
             </form>
         </div>
     </div>
