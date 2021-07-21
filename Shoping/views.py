@@ -136,9 +136,10 @@ class SearchView(ListView):
         request = self.request
 
         #میگه اگر حر وارد شده برای سرچ برابر ود با کیو(q)
-        qs = request.GET.get('q')
+        qs = request.GET.get('question')
         if qs is not None:
-            return Product.objects.filter(active=True,title__icontains=qs)
+            # برای اینکه هم عنوان و هم توضیحات را بتوان سرچ کرد در مودل یک تابعی در منجرش ساختیم و آن را به اینجا پاس دادیم
+            return Product.objects.Search(qs)
         return Product.objects.get_active_product()
 
         # __icontains -> فیلد هایی که شامل این مقدار هست

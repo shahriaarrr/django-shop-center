@@ -1,12 +1,17 @@
 from django.core.exceptions import MultipleObjectsReturned
 from django.db import models
 
+from django.db.models import Q
 
 
 #To display the product in active or inactive mode
 class ProdctManager(models.Manager):
     def get_active_product(self):
         return self.get_queryset().filter(active=True)
+
+    def Search(self,query):
+        title_description = Q(title__icontains=query) | Q(description__icontains=query)
+        return self.get_queryset().filter(title_description,active=True).distinct()  # distinct -> اگر آیتم تکراری بود پاکش کن
 
 
 

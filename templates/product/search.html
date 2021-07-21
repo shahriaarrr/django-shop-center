@@ -7,7 +7,7 @@
         <div class="search_box">
             <!-- action="search" -> search adress in url.py -->
             <form action="/Product-list/search" method="GET">
-                <input type="search" placeholder="Searching ... " class="form-control-search h-25" value="{{ request.GET.q }}" name="q">
+                <input type="search" placeholder="Searching ... " class="form-control-search h-25" value="{{ request.GET.question }}" name="question">
             </form>
         </div>
     </div>
