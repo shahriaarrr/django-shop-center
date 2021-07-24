@@ -1,5 +1,6 @@
 import django
 from django.db import reset_queries
+from django.db.models.signals import pre_save
 from django.shortcuts import render,redirect,get_list_or_404
 from django.http import Http404, request
 from django import forms
@@ -15,7 +16,7 @@ from django.views.generic import ListView
 from django.views.generic import DetailView
 
 # imports Product -> models.py
-from .models import Product
+from .models import Product,Tag
 
 
 # -----------------------------
@@ -150,8 +151,14 @@ class SearchView(ListView):
 def product_detail_view(request,pk):
     # handel error 404
     product = get_list_or_404(Product,id=pk)
-
     product = Product.objects.get(id=pk)
+
+
+
+    print(product.tag_set.all())
+
+
+
 
     # برای اینکه اگر محصولی اکتیو نبود توی دیتیل ویو هم در یو ار ال نمایش داده نشود.
     if product.active:

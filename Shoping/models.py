@@ -13,7 +13,7 @@ class ProdctManager(models.Manager):
         return self.get_queryset().filter(active=True)
 
     def Search(self,query):
-        title_description = Q(title__icontains=query) | Q(description__icontains=query)
+        title_description = Q(title__icontains=query) | Q(description__icontains=query) | Q(tag__title__icontains=query)
         return self.get_queryset().filter(title_description,active=True).distinct()  # distinct -> اگر آیتم تکراری بود پاکش کن
 
 
