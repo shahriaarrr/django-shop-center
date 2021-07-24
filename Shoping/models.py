@@ -3,6 +3,9 @@ from django.db import models
 
 from django.db.models import Q
 
+# imports for slug
+from django.db.models.signals import pre_save,post_save
+
 
 #To display the product in active or inactive mode
 class ProdctManager(models.Manager):
@@ -38,4 +41,19 @@ class Product(models.Model):
         verbose_name_plural = 'محصولات'  # --> for remove "s" on header page amdin
         verbose_name = 'محصولات'
 
-    
+# --------
+# tags
+
+class Tag(models.Model):
+    title = models.CharField(max_length=120)
+    slug = models.SlugField()
+    create_time = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
+    products = models.ManyToManyField(Product,blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'تگ ها'
+        verbose_name = 'تگ '
