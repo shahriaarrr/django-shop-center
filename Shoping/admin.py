@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import Product,Tag
+from .models import Product,Tag,Category
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['__str__','title','price','active']
+    list_display = ['__str__','title','price','active',]
     list_filter = ['title','price']
     
 
@@ -14,3 +14,5 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(Product,ProductAdmin)
 admin.site.register(Tag)
+admin.site.register(Category)
+

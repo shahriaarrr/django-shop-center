@@ -153,12 +153,8 @@ def product_detail_view(request,pk):
     product = get_list_or_404(Product,id=pk)
     product = Product.objects.get(id=pk)
 
-
-
-    print(product.tag_set.all())
-
-
-
+    # list tag haei eke vase har product set shode ro neshon mide
+    # print(product.tag_set.all())
 
     # برای اینکه اگر محصولی اکتیو نبود توی دیتیل ویو هم در یو ار ال نمایش داده نشود.
     if product.active:

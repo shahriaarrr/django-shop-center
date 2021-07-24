@@ -13,10 +13,21 @@ class ProdctManager(models.Manager):
         return self.get_queryset().filter(active=True)
 
     def Search(self,query):
-        title_description = Q(title__icontains=query) | Q(description__icontains=query) | Q(tag__title__icontains=query)
+        title_description = Q(title__icontains=query) | Q(description__icontains=query) | Q(tag__title__icontains=query)  # search with tags
         return self.get_queryset().filter(title_description,active=True).distinct()  # distinct -> اگر آیتم تکراری بود پاکش کن
 
 
+class Category(models.Model):
+    title = models.CharField(max_length=150)
+    name = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'دسته بندی ها'
+        verbose_name = 'دسته بندی'
+    
 
 class Product(models.Model):
     title = models.CharField(max_length=120,verbose_name="عنوان")
@@ -24,6 +35,7 @@ class Product(models.Model):
     price = models.IntegerField(verbose_name='قیمت')
     image = models.ImageField(upload_to='image/',blank=True,null=True,verbose_name='تصویر')
     active = models.BooleanField(verbose_name='فعال / غیرفعال',default=False)
+    categories = models.ManyToManyField(Category,blank=True,verbose_name='دسته بندی ها')
     
     objects = ProdctManager()
     # slug = models.SlugField(blank=True)
@@ -56,4 +68,6 @@ class Tag(models.Model):
 
     class Meta:
         verbose_name_plural = 'تگ ها'
-        verbose_name = 'تگ '
+        verbose_name = 'تگ'
+
+
