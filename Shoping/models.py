@@ -116,7 +116,7 @@ class Slider(models.Model):
 # Gallery for product
 class Gallery(models.Model):
     title = models.CharField(max_length=150)
-    image = models.ImageField(upload_to=upload_image_Gallery_path,blank=True,null=True,verbose_name='تصویر')
+    image = models.ImageField(upload_to=upload_image_Gallery_path,verbose_name='تصویر')
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
  
     def __str__(self):

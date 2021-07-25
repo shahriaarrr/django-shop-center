@@ -12,11 +12,15 @@ class ProductAdmin(admin.ModelAdmin):
         model = Product
 
 
+class galleryAdmin(admin.ModelAdmin):
+    list_display = ['title','product']
+
+
 admin.site.register(Product,ProductAdmin)
 admin.site.register(Tag)
 admin.site.register(Category)
 admin.site.register(Slider)
-admin.site.register(Gallery)
+admin.site.register(Gallery,galleryAdmin)
 
 
 

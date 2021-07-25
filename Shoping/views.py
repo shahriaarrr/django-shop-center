@@ -16,8 +16,10 @@ from django.views.generic import ListView
 from django.views.generic import DetailView
 
 # imports Product -> models.py
-from .models import Product,Tag,Category,Slider 
+from .models import Product,Tag,Category,Slider,Gallery
 
+
+import itertools
 
 # -----------------------------
 
@@ -148,6 +150,10 @@ class SearchView(ListView):
         # __iexact -> فیلد هایی که دقیقا برابر با مقدار وارد شده است
 
 # -----------------------------
+def group_list_image_gallery(num,list_show):
+    args = [iter(list_show)] * num
+    return ([e for e in t if e is not None] for t in itertools.zip_longest(*args))
+
 
 def product_detail_view(request,pk):
     # handel error 404
@@ -158,13 +164,18 @@ def product_detail_view(request,pk):
     # print(product.tag_set.all())
 
     # برای اینکه اگر محصولی اکتیو نبود توی دیتیل ویو هم در یو ار ال نمایش داده نشود.
-    if product.active:
-        context = {
-            'product':product
-        }
-        return render(request,'product/produvt-detail.html',context)
-    else:
+    if product is None or not product.active:
         raise Http404('محصول مورد نظر یافت نشد')
+
+    gallery = Gallery.objects.filter(product_id=product)
+    gallery_list = list(group_list_image_gallery(3,gallery))
+    print(gallery)
+    context = {
+        'product':product,
+        'gallery':gallery_list
+        }
+    return render(request,'product/produvt-detail.html',context)
+
         # return redirect('Shoping:page-404')
 
 # -----------------------------

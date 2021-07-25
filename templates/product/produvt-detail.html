@@ -15,6 +15,19 @@
         <span class="text-dark"><span class="text-success dolar"></span>{{ product.price }} تومان</span>   
     </div>
 
+    {% if gallery %}
+    <div class="gallery col-md-4">
+        <p class="text-center text-danger mb-4">عکس های مربوطه</p>
+        {% for g in gallery %}
+            {% for g2 in g %}
+                <img src="{{ g2.image.url }}" alt="{{g2.image.url}}">
+                {% endfor %}
+        {% endfor %}    
+    </div>
+    {% endif %}
+    
+    
+
 
 
 </div>

@@ -24,3 +24,12 @@
     background-color: #FF685B;
     color: #fff;
 }
+
+.container .gallery{
+    border: 1px #FF685B solid;
+}
+
+.container .gallery img{
+    width: 100px;
+    height: 100px;
+}
