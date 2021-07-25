@@ -1,3 +1,4 @@
+from posixpath import splitext
 from django.core.exceptions import MultipleObjectsReturned
 from django.db import models
 
@@ -5,6 +6,21 @@ from django.db.models import Q
 
 # imports for slug
 from django.db.models.signals import pre_save,post_save
+
+# set name image
+import os
+# for sliders
+def get_filename_ext(filepath):
+    base_name = os.path.basename(filepath)
+    name, ext = os.path.splitext(base_name)
+    return name, ext
+
+def upload_image_path(instance, filename):
+    name, ext = get_filename_ext(filename)
+    final_name = f'{instance.id}-{instance.title}{ext}'
+    return f'sliders/{final_name}'
+
+
 
 
 #To display the product in active or inactive mode
@@ -73,3 +89,12 @@ class Tag(models.Model):
         verbose_name = 'تگ'
 
 
+
+
+class Slider(models.Model):
+    title = models.CharField(max_length=150)
+    link = models.URLField(max_length=150)
+    description = models.TextField()
+    image = models.ImageField(upload_to=upload_image_path,blank=True,null=True,verbose_name='تصویر')
+
+    

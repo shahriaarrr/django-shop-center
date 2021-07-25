@@ -16,15 +16,16 @@ from django.views.generic import ListView
 from django.views.generic import DetailView
 
 # imports Product -> models.py
-from .models import Product,Tag,Category
+from .models import Product,Tag,Category,Slider 
 
 
 # -----------------------------
 
 def Home_page(request): 
     name = 'yaisn esmaeili'
+    sliders = Slider.objects.all()
     context = {
-        'name':name
+        'sliders':sliders
     }
     return render(request,'home.html',context)
 
@@ -183,9 +184,9 @@ class ProductListViewByCategory(ListView):
         return Product.objects.get_category(caegory)
 
 
-    def product_category(request):
-        category = Category.objects.all()
-        context = {
-            'category':category
+def product_category(request):
+    category = Category.objects.all()
+    context = {
+        'category':category
         }
-        return render(request,'product-list.html',context)
+    return render(request,'product-list.html',context)
