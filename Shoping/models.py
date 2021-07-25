@@ -12,6 +12,9 @@ class ProdctManager(models.Manager):
     def get_active_product(self):
         return self.get_queryset().filter(active=True)
 
+    def get_category(self,categoty_name):
+        return self.get_queryset().filter(categories__name__iexact=categoty_name,active=True)
+
     def Search(self,query):
         title_description = Q(title__icontains=query) | Q(description__icontains=query) | Q(tag__title__icontains=query)  # search with tags
         return self.get_queryset().filter(title_description,active=True).distinct()  # distinct -> اگر آیتم تکراری بود پاکش کن
@@ -20,7 +23,6 @@ class ProdctManager(models.Manager):
 class Category(models.Model):
     title = models.CharField(max_length=150)
     name = models.CharField(max_length=150)
-
     def __str__(self):
         return self.title
 

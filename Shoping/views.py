@@ -16,7 +16,7 @@ from django.views.generic import ListView
 from django.views.generic import DetailView
 
 # imports Product -> models.py
-from .models import Product,Tag
+from .models import Product,Tag,Category
 
 
 # -----------------------------
@@ -168,4 +168,24 @@ def product_detail_view(request,pk):
 
 # -----------------------------
 
+class ProductListViewByCategory(ListView):
+    # queryset = Product.objects.all()
+    template_name = 'product/product-list.html'
+    paginate_by = 4
+    
+    def get_queryset(self):
+        # print(self.kwargs)
+        category_name = self.kwargs['category_name']
+        caegory = Category.objects.filter(name__iexact=category_name).first()
+        if caegory is None:
+            raise Http404('صفحه ی مورد نظر یافت نشد!')
 
+        return Product.objects.get_category(caegory)
+
+
+    def product_category(request):
+        category = Category.objects.all()
+        context = {
+            'category':category
+        }
+        return render(request,'product-list.html',context)

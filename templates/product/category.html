@@ -1,0 +1,16 @@
+
+{% load static %}
+{% block body %}
+
+<div class="col-md-3">
+    <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+          The current button
+        </button>
+        {% for cate in category %}
+        <a  class="btn list-group-item list-group-item-action" href="Product-list/{{ cate.name }}">{{ cate.title }}</a>
+        {% endfor %}
+      </div> 
+</div>
+
+{% endblock %}

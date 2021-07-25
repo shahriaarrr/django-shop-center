@@ -9,16 +9,21 @@
 
     {% include 'product/search.html' %}
 
-    <div class="row list-row my-5 ">
-        {% for ol in object_list %}
-        <div class="card-list col-md-3 col-sm-4 col-12 col-lg-3 my-2 pull-left">
-            <img src="{{ ol.image.url }}" alt="">
-            <h2 class="text-dark">{{ol.title}}</h2>
-            <p class="text-dark">{{ ol.snippet }}</p>
-            <span class="text-dark"><span class="text-success">$</span>{{ ol.price }}</span>
-            <a href="{% url 'Shoping:ProductDetail' ol.pk %}" class="btn button btn-sm btn-block">View</a>
+    <div class="row">
+        
+        {% include 'product/category.html' %}
+    
+        <div class="row list-row my-5 ">
+            {% for ol in object_list %}
+            <div class="card-list col-md-3 col-sm-4 col-12 col-lg-3 my-2 pull-left">
+                <img src="{{ ol.image.url }}" alt="">
+                <h2 class="text-dark">{{ol.title}}</h2>
+                <p class="text-dark">{{ ol.snippet }}</p>
+                <span class="text-dark"><span class="text-success">$</span>{{ ol.price }}</span>
+                <a href="{% url 'Shoping:ProductDetail' ol.pk %}" class="btn button btn-sm btn-block">View</a>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 
 
@@ -46,4 +51,4 @@
     </div>
 </div>
 
-{% endblock %}
+{% endblock %}  
