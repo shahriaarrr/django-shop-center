@@ -1,5 +1,8 @@
 .card-detail {
-    border: 1px #FF685B solid;
+    border: 1px #0b525b solid;
+    background-color: #272640;
+    box-shadow: 5px 5px 20px #072f33;
+
 
 }
 
@@ -10,26 +13,36 @@
 .card-detail h2{
     font-size: 20px;
     margin-top: 5px;
+    color: #fff;
+}
+
+.card-detail p{
+    color: #0b525b;
 }
 
 
 .container .button{
     width: 150px;
     border-radius: 1px;
-    border: 1px #FF685B solid;
-    color: #FF685B;
+    border: 1px #0b525b solid;
+    color: #fff;
+    box-shadow: 5px 5px 20px #072f33;
 }
 
 .container .button:hover{
-    background-color: #FF685B;
+    background-color: #0b525b;
     color: #fff;
 }
 
 .container .gallery{
-    border: 1px #FF685B solid;
+    border: 1px #0b525b solid;
 }
 
 .container .gallery img{
     width: 100px;
     height: 100px;
+}
+
+span{
+    color: #0b525b;
 }

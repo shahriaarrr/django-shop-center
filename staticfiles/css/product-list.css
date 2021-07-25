@@ -9,11 +9,13 @@
 }
 
 .card-list h2{
-    font-size: 20px;
+    font-size: 17px;
     margin-top: 5px;
+    color: #fff;
 }
 .card-list p{
     font-size: 13px;
+    color: #0b525b;
 }
 
 .card-list span{
@@ -25,7 +27,7 @@
     
     max-width: 100%;
 
-    border: 1px #FF685B solid;
+    border: 1px #0b525b solid;
     padding: 15px;
     /* border-radius: 15px; */
 }
@@ -36,30 +38,33 @@
 
 .card-list .button{
     margin-top: 10px;
-    border: 1px #FF685B solid;
+    border: 1px #0b525b solid;
     font-size: 16px;
-    color: #FF685B;
+    color: #fff;
     border-radius: 0px;
+    /* box-shadow: 5px 5px 20px #072f33; */
 }
 
 
 
 .card-list .button:hover{
     transition: .5s;
-    background-color: #FF685B;
+    background-color: #0b525b;
     color: #fff;
 }
 
 .butto-n{
-    border: 1px #FF685B solid;
+    border: 1px #0b525b solid;
     border-radius: 0px;
+
 }
 
 .butto-n:hover {
     transition: .5s;
-    background-color: #FF685B;
+    background-color: #0b525b;
 }
 
 span .toman {
     font-size: 15px;
+    color: #0b525b;
 }

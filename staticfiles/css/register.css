@@ -1,6 +1,6 @@
 .register-row{
     margin-top: 100px;
-
+    box-shadow: 5px 5px 20px #072f33;
 }
 
 input[type='text']{
@@ -9,8 +9,10 @@ input[type='text']{
     outline: none;
     border: none;
     background-color: rgba(255, 255, 255, 0);
-    border-bottom: 1px #FF685B solid; 
+    border-bottom: 1px #0b525b solid; 
     font-family: cursive;
+    color: #0b525b;
+
 }
 
 input[type='email']{
@@ -22,7 +24,9 @@ input[type='email']{
     border: none;
     background-color: rgba(255, 255, 255, 0);
     font-family: cursive;
-    border-bottom: 1px #FF685B solid; 
+    border-bottom: 1px #0b525b solid; 
+    color: #0b525b;
+
 }
 
 input[type='password']{
@@ -34,7 +38,8 @@ input[type='password']{
     border: none;
     background-color: rgba(255, 255, 255, 0);
     font-family: cursive;
-    border-bottom: 1px #FF685B solid; 
+    border-bottom: 1px #0b525b solid; 
+    color: #0b525b;
 }
 
 label{
@@ -45,16 +50,18 @@ label{
     width: 100%;  
     font-family: cursive;
     font-size: 14px;
-    border: 1px #FF685B solid;
+    border: 1px #0b525b solid;
     border-radius: 1px;
-    color: #FF685B;
+    color: #0b525b;
+    box-shadow: 5px 5px 20px #072f33;
 }
 .button:hover{
-    background-color: #FF685B;
+    background-color: #0b525b;
     color: #fff;
 }
 
 .register-row {
-    border: 1px #FF685B solid;
+    border: 1px #0b525b
+     solid;
     padding: 50px;
 }

@@ -10,9 +10,9 @@
         <p class="text-danger">{{ product.time | timesince }} ago</p>
         <p class="text-danger">{{ product.time | date }} ago</p>
         <img src="{{ product.image.url }}" alt="">
-        <h2 class="text-warning text-dark">{{product.title}}</h2>
-        <p class="text-dark">{{product.description}}</p>
-        <span class="text-dark"><span class="text-success dolar"></span>{{ product.price }} تومان</span>   
+        <h2 class="my-5">{{product.title}}</h2>
+        <p>{{product.description}}</p>
+        <span><span class="dolar"></span>{{ product.price }} تومان</span>   
     </div>
 
     {% if gallery %}

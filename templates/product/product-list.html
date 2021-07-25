@@ -11,15 +11,15 @@
 
     <div class="row">
         
-        {% include 'product/category.html' %}
+        <!-- {% include 'product/category.html' %} -->
     
         <div class="row list-row my-5 ">
             {% for ol in object_list %}
             <div class="card-list col-md-3 col-sm-4 col-12 col-lg-3 my-2 pull-left">
                 <img src="{{ ol.image.url }}" alt="">
-                <h2 class="text-dark">{{ol.title}}</h2>
-                <p class="text-dark">{{ ol.snippet }}</p>
-                <span class="text-dark"><span class="text-success"></span><span class="text-danger toman">{{ ol.price }}</span><span class="text-success toman">تومان</span></span>
+                <h2 class="text-center">{{ol.title}}</h2>
+                <p class="text-center">{{ ol.snippet }}</p>
+                <span class="text-dark"><span class="text-success"></span><span class="toman">{{ ol.price }}</span><span class="toman">تومان</span></span>
                 <a href="{% url 'Shoping:ProductDetail' ol.pk %}" class="btn button btn-sm btn-block">مشاهده</a>
             </div>
             {% endfor %}
@@ -31,19 +31,19 @@
         <div class="btn-toolbar mb-3 my-5" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group mr-2" role="group" aria-label="First group">
                 {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}" class="butto-n btn">&laquo;</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="butto-n btn" style="color: #0b525b; box-shadow: 5px 5px 20px #072f33;">&laquo;</a>
                 {% endif %}
 
                 {% for page in paginator.page_range %}
                     {% if page == page_obj.number %}
-                        <a href="?page={{page}}" class="butto-n btn active" style="background-color: #FF685B;">{{page}}</a>
+                        <a href="?page={{page}}" class="butto-n btn active" style="background-color: #0b525b; color: #fff; box-shadow: 5px 5px 20px #072f33;">{{page}}</a>
                     {% else %}
-                        <a href="?page={{page}}" class="butto-n btn ">{{page}}</a>
+                        <a href="?page={{page}}" class="butto-n btn " style="color: #0b525b; box-shadow: 5px 5px 20px #072f33;">{{page}}</a>
                     {% endif %}
                 {% endfor %}
 
                 {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}" class="butto-n btn">&raquo;</a>
+                <a href="?page={{ page_obj.next_page_number }}" class="butto-n btn" style="color: #0b525b; box-shadow: 5px 5px 20px #072f33;">&raquo;</a>
                 {% endif %}
     
             </div>
