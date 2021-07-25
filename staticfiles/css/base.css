@@ -1,5 +1,7 @@
 
-
+body{
+    direction: rtl;
+}
 
 ul{
     background-color:rgba(252, 252, 252, 0);

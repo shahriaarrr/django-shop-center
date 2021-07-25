@@ -4,8 +4,8 @@
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/product-list.css' %}">
 
-<div class="container">
-    <h1 class="text-center text-warning">Product-list</h1>
+<div class="container my-5">
+
 
     {% include 'product/search.html' %}
 
@@ -19,8 +19,8 @@
                 <img src="{{ ol.image.url }}" alt="">
                 <h2 class="text-dark">{{ol.title}}</h2>
                 <p class="text-dark">{{ ol.snippet }}</p>
-                <span class="text-dark"><span class="text-success">$</span>{{ ol.price }}</span>
-                <a href="{% url 'Shoping:ProductDetail' ol.pk %}" class="btn button btn-sm btn-block">View</a>
+                <span class="text-dark"><span class="text-success"></span><span class="text-danger toman">{{ ol.price }}</span><span class="text-success toman">تومان</span></span>
+                <a href="{% url 'Shoping:ProductDetail' ol.pk %}" class="btn button btn-sm btn-block">مشاهده</a>
             </div>
             {% endfor %}
         </div>

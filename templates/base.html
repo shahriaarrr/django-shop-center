@@ -13,24 +13,24 @@
     <div class="container">
         <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link " href="{% url 'Shoping:home' %}">Home</a>
+              <a class="nav-link " href="{% url 'Shoping:home' %}">خانه</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'Shoping:ProductList' %}">Products</a>
+              <a class="nav-link" href="{% url 'Shoping:ProductList' %}">محصولات</a>
             </li>
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
+              <a class="nav-link" href="#">پروفایل</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'Shoping:logout' %}">Logout</a>
+              <a class="nav-link" href="{% url 'Shoping:logout' %}">خروج</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'Shoping:login' %}">Login</a>
+              <a class="nav-link" href="{% url 'Shoping:login' %}">ورود</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'Shoping:register' %}">Register</a>
+              <a class="nav-link" href="{% url 'Shoping:register' %}">ساختن اکانت</a>
             </li>
             {% endif %}
 

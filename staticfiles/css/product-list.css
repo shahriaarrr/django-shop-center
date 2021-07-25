@@ -59,3 +59,7 @@
     transition: .5s;
     background-color: #FF685B;
 }
+
+span .toman {
+    font-size: 15px;
+}

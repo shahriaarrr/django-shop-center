@@ -21,6 +21,18 @@ def upload_image_path(instance, filename):
     return f'sliders/{final_name}'
 
 
+# for Gallery
+def get_filename_Gallery_ext(filepath):
+    base_name = os.path.basename(filepath)
+    name, ext = os.path.splitext(base_name)
+    return name, ext
+
+def upload_image_Gallery_path(instance, filename):
+    name, ext = get_filename_ext(filename)
+    final_name = f'{instance.id}-{instance.title}{ext}'
+    return f'gallery/{final_name}'
+
+
 
 
 #To display the product in active or inactive mode
@@ -96,5 +108,16 @@ class Slider(models.Model):
     link = models.URLField(max_length=150)
     description = models.TextField()
     image = models.ImageField(upload_to=upload_image_path,blank=True,null=True,verbose_name='تصویر')
+    
+    def __str__(self):
+        return self.title
 
     
+# Gallery for product
+class Gallery(models.Model):
+    title = models.CharField(max_length=150)
+    image = models.ImageField(upload_to=upload_image_Gallery_path,blank=True,null=True,verbose_name='تصویر')
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+ 
+    def __str__(self):
+        return self.title

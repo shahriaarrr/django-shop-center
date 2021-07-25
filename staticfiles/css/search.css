@@ -1,3 +1,7 @@
+*{
+    direction: rtl;
+}
+
 .form-control-search {
     outline: none;
     background-color: rgba(0, 0, 0, 0);
