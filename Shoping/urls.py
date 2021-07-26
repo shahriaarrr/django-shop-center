@@ -25,5 +25,7 @@ urlpatterns = [
     #category
     path('Product-list/<category_name>',views.ProductListViewByCategory.as_view()),
     
-    path('category/',views.product_category,name='category')
+    path('category/',views.product_category,name='category'),
+
+    path('contact-us/',views.ContactPage,name='contact')
 ]

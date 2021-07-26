@@ -6,7 +6,7 @@ from django.http import Http404, request
 from django import forms
 
 # imports forms.py
-from .forms import ContactForm,LoginForm,RegisterForm
+from .forms import ContactForm,LoginForm,RegisterForm,ContactUsForm
 
 # imports for user
 from django.contrib.auth import authenticate,login,get_user_model,logout  # <-- register (get_user_model)
@@ -16,7 +16,7 @@ from django.views.generic import ListView
 from django.views.generic import DetailView
 
 # imports Product -> models.py
-from .models import Product,Tag,Category,Slider,Gallery
+from .models import Product,Tag,Category,Slider,Gallery,ContactUsModel
 
 
 import itertools
@@ -206,3 +206,23 @@ def product_category(request):
         'category':category
         }
     return render(request,'product-list.html',context)
+
+
+# ----- contact page ----
+def ContactPage(request):
+
+    contact_form = ContactUsForm(request.POST or None)
+    if contact_form.is_valid():
+        fullname = contact_form.cleaned_data.get('full_name')
+        email = contact_form.cleaned_data.get('email')
+        text = contact_form.cleaned_data.get('text')
+        ContactUsModel.objects.create(full_name=fullname,email=email,text=text)
+        contact_form = ContactUsForm()
+        return redirect('Shoping:home')
+
+
+    context = {
+        'contactform':contact_form
+    }
+
+    return render(request,'contact.html',context)

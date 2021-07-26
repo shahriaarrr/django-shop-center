@@ -121,3 +121,23 @@ class Gallery(models.Model):
  
     def __str__(self):
         return self.title
+
+
+
+class ContactUsModel(models.Model):
+    full_name = models.CharField(max_length=150,verbose_name='نام و نام خانوادگی')
+    email = models.EmailField(max_length=150,verbose_name='ایمیل')
+    text = models.TextField(verbose_name='متن پیام')
+    is_read = models.BooleanField(verbose_name='خوانده شده / نشده',default=False)
+
+
+    def __str__(self):
+        return self.full_name
+
+    class Meta:
+        verbose_name_plural = 'تماس های کاربران'
+        verbose_name = 'تماس با ما '
+
+
+
+

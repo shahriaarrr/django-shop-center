@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container">
+    <div class="row text-light">
+        <div class="col-md-4 my-5">
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                {{contactform.full_name.label}}
+                {{contactform.full_name}}
+                {% for error in contactform.full_name.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+                <br>
+                {{contactform.email.label}}
+                {{contactform.email}}
+                {% for error in contactform.email.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+                <br>
+                {{contactform.text.label}}
+                {{contactform.text}}
+
+                <input type="submit" value="Send" class="btn btn-success btn-sm btn-block my-4">
+
+            </form>
+        </div>
+        <div class="col-md-8">
+            this is image
+        </div>
+    </div>
+</div>
+
+{% endblock %}
