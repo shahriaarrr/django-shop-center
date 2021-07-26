@@ -1,35 +1,4 @@
-.register-row{
-    margin-top: 100px;
-    box-shadow: 5px 5px 20px #072f33;
-}
-
-input[type='text']{
-    width: 100%;
-    height: 40px;
-    outline: none;
-    border: none;
-    background-color: rgba(255, 255, 255, 0);
-    border-bottom: 1px #0b525b solid; 
-    font-family: cursive;
-    color: #0b525b;
-
-}
-
-input[type='email']{
-    margin-top: 50px;
-    width: 100%;
-    height: 40px;
-    justify-self: center;
-    outline: none;
-    border: none;
-    background-color: rgba(255, 255, 255, 0);
-    font-family: cursive;
-    border-bottom: 1px #0b525b solid; 
-    color: #0b525b;
-
-}
-
-input[type='password']{
+input{
     margin-top: 50px;
     width: 100%;
     height: 40px;
@@ -42,8 +11,26 @@ input[type='password']{
     color: #0b525b;
 }
 
-label{
-    display: none;
+textarea {
+    margin-top: 50px;
+    width: 100%;
+    height: 40px;
+    justify-self: center;
+    outline: none;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    font-family: cursive;
+    border: 1px #0b525b solid; 
+    height: 100%;
+    color: #0b525b;
+
+}
+
+form .error {
+    direction: rtl;
+    float: right;
+    font-size: 10px;
+    color: red;
 }
 
 .button{
@@ -53,15 +40,16 @@ label{
     border: 1px #0b525b solid;
     border-radius: 1px;
     color: #0b525b;
-
 }
 .button:hover{
     background-color: #0b525b;
     color: #fff;
 }
 
-.register-row {
-    border: 1px #0b525b
-     solid;
+.contact-fields {
     padding: 50px;
+    margin-top: 100px;
+    box-shadow: 5px 5px 20px #072f33;
+    border: 1px #0b525b solid; 
+
 }

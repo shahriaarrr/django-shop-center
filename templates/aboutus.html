@@ -2,11 +2,13 @@
 {% load static %}
 
 {% block body %}
-
+<link rel="stylesheet" href="{% static 'css/abouus.css' %}">
 <div class="container">
     <div class="row">
         <div class="col-md-12 my-5">
-            <p class="text-light text-center">{{text.text}}</p>
+            <div class="text">
+                <p class="text-center">{{text.text}}</p>
+            </div>
         </div>
     </div>
 </div>

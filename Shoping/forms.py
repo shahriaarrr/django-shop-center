@@ -100,7 +100,7 @@ class RegisterForm(forms.Form):
 
 
 class ContactUsForm(forms.Form):
-    full_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'لطفا نام و نام خانوادگی خود را وارد کنید'}),label='نام و نام خانوادگی',validators=[validators.MaxLengthValidator(150,message='نام و نام خانوادگی شما نمیتواند بیشتر از 150 کاراکتر باشد')])
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control','placeholder':'ایمیل خودرا وارد کنید'}),label='ایمیل',validators=[validators.EmailValidator(message='ایمیل وارد شده اشتباه است')])
-    text = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','placeholder':'متن پیام خود را وارد کنید ...'}),label='متن پیام ')
+    full_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'لطفا نام و نام خانوادگی خود را وارد کنید'}),label='نام و نام خانوادگی',validators=[validators.MaxLengthValidator(150,message='نام و نام خانوادگی شما نمیتواند بیشتر از 150 کاراکتر باشد')])
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder':'ایمیل خودرا وارد کنید'}),label='ایمیل',validators=[validators.EmailValidator(message='ایمیل وارد شده اشتباه است')])
+    text = forms.CharField(widget=forms.Textarea(attrs={'placeholder':'متن پیام خود را وارد کنید ...'}),label='متن پیام ')
     
