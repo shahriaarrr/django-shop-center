@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Product,Tag,Category,Slider,Gallery,ContactUsModel
+from .models import Product,Tag,Category,Slider,Gallery,ContactUsModel,AboutUs
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -26,6 +26,7 @@ admin.site.register(Category)
 admin.site.register(Slider)
 admin.site.register(Gallery,galleryAdmin)
 admin.site.register(ContactUsModel,contact_us)
+admin.site.register(AboutUs)
 
 
 

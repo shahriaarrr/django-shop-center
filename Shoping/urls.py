@@ -27,5 +27,6 @@ urlpatterns = [
     
     path('category/',views.product_category,name='category'),
 
-    path('contact-us/',views.ContactPage,name='contact')
+    path('contact-us/',views.ContactPage,name='contact'),
+    path('about-us/',views.AboutPage,name='about')
 ]

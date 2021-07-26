@@ -140,4 +140,9 @@ class ContactUsModel(models.Model):
 
 
 
+class AboutUs(models.Model):
+    text = models.TextField(verbose_name='توضیحات')
 
+    class Meta:
+        verbose_name_plural = 'درباره ما'
+        verbose_name = 'درباره ما'

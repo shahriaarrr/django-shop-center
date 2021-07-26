@@ -16,7 +16,7 @@ from django.views.generic import ListView
 from django.views.generic import DetailView
 
 # imports Product -> models.py
-from .models import Product,Tag,Category,Slider,Gallery,ContactUsModel
+from .models import Product,Tag,Category,Slider,Gallery,ContactUsModel,AboutUs
 
 
 import itertools
@@ -226,3 +226,11 @@ def ContactPage(request):
     }
 
     return render(request,'contact.html',context)
+
+def AboutPage(request):
+    text = AboutUs.objects.first()
+    context = {
+        'text':text
+    }
+
+    return render(request,'aboutus.html',context)
