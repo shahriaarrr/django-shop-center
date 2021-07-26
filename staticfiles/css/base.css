@@ -24,3 +24,9 @@ ul .nav-link:hover{
     color: #fff;
 }
 
+.logo{
+    padding: 5px;
+    width: 50px;
+    margin-left: 5px;
+}
+
