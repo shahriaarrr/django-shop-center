@@ -167,12 +167,17 @@ def product_detail_view(request,pk):
     if product is None or not product.active:
         raise Http404('محصول مورد نظر یافت نشد')
 
+    # برای ساختن قسمت محصولات پیشنهادی در هر صفحه
+    mahsolat_pisnahadi = Product.objects.get_queryset().filter(categories__product=product).distinct()
+    grouped_mahsolat_pisnahadi = group_list_image_gallery(3,mahsolat_pisnahadi)
+
     gallery = Gallery.objects.filter(product_id=product)
     gallery_list = list(group_list_image_gallery(3,gallery))
     print(gallery)
     context = {
         'product':product,
-        'gallery':gallery_list
+        'gallery':gallery_list,
+        'mahsolat_pisnahadi':grouped_mahsolat_pisnahadi
         }
     return render(request,'product/produvt-detail.html',context)
 

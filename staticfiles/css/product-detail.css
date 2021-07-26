@@ -46,3 +46,17 @@
 span{
     color: #0b525b;
 }
+
+
+.container .mahsolat-pishnahadi{
+    border: 1px #0b525b solid;
+
+}
+
+
+
+.mahsolat-pishnahadi img{
+    width: 120px;
+    height: 120px;
+    margin-bottom: 30px;
+}

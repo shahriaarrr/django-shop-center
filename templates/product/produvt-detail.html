@@ -17,7 +17,7 @@
 
     {% if gallery %}
     <div class="gallery col-md-4">
-        <p class="text-center text-danger mb-4">عکس های مربوطه</p>
+        <p class="text-center text-light mb-4">عکس های مربوطه</p>
         {% for g in gallery %}
             {% for g2 in g %}
                 <img src="{{ g2.image.url }}" alt="{{g2.image.url}}">
@@ -25,6 +25,16 @@
         {% endfor %}    
     </div>
     {% endif %}
+
+    <div class="mahsolat-pishnahadi col-md-12 my-5">
+        <h5 class="text-center text-light">محصولات پیشنهادی</h5>
+        {% for p_l in mahsolat_pisnahadi %}
+            {% for p in p_l %}
+                
+                <a href="{% url 'Shoping:ProductDetail' p.pk %}"><img src="{{ p.image.url }}" alt=""></a>
+            {% endfor %}
+        {% endfor %}
+    </div>
     
     
 
