@@ -79,6 +79,9 @@ class Product(models.Model):
     def snippet(self):
         return self.description[:50] + '...'
 
+    def header(self):
+        return self.title[:13] + '...'
+
     class Meta:
         verbose_name_plural = 'محصولات'  # --> for remove "s" on header page amdin
         verbose_name = 'محصولات'
