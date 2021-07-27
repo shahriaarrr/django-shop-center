@@ -248,18 +248,15 @@ def AboutPage(request):
 @login_required
 def add_user_order(request):
     new_order_form = UserNewOrderForm(request.POST or None)
-    
 
     if new_order_form.is_valid():
         order = Order.objects.filter(owner_id=request.user.id, is_paid=False).first()
-        print(order)
         if order is None:
             order = Order.objects.create(owner_id=request.user.id,is_paid=False)
         product_id = new_order_form.cleaned_data.get('product_id')
         count = new_order_form.cleaned_data.get('count')
         if count < 0:
             count = 1
-        # product = Product.objects.get_by_id(product_id=product_id)
         product = Product.objects.get_queryset().filter(id=product_id).first()
         order.orderdetail_set.create(product_id=product.id,price=product.price, count=count)
         

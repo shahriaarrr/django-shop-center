@@ -161,6 +161,7 @@ class Order(models.Model):
 
     def __str__(self):
         return self.owner
+        
     class Meta:
         verbose_name_plural = 'سبد های خرید کاربران'
         verbose_name = 'سبد خرید'
