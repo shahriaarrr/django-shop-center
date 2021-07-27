@@ -240,20 +240,23 @@ def AboutPage(request):
 
 #---- Order
 # zamani mishe kharid kard ke user login bashe
-@login_required
+# @login_required
 def add_user_order(request):
-    new_order_form = UserNewOrderForm(request.POST or None)
+    if request.user.is_authenticated:
+        new_order_form = UserNewOrderForm(request.POST or None)
 
-    if new_order_form.is_valid():
-        order = Order.objects.filter(owner_id=request.user.id, is_paid=False).first()
-        if order is None:
-            order = Order.objects.create(owner_id=request.user.id,is_paid=False)
-        product_id = new_order_form.cleaned_data.get('product_id')
-        count = new_order_form.cleaned_data.get('count')
-        if count < 0:
-            count = 1
-        product = Product.objects.get_queryset().filter(id=product_id).first()
-        order.orderdetail_set.create(product_id=product.id,price=product.price, count=count)
+        if new_order_form.is_valid():
+            order = Order.objects.filter(owner_id=request.user.id, is_paid=False).first()
+            if order is None:
+                order = Order.objects.create(owner_id=request.user.id,is_paid=False)
+            product_id = new_order_form.cleaned_data.get('product_id')
+            count = new_order_form.cleaned_data.get('count')
+            if count < 0:
+                count = 1
+            product = Product.objects.get_queryset().filter(id=product_id).first()
+            order.orderdetail_set.create(product_id=product.id,price=product.price, count=count)
+            
         
-    
-    return redirect('Shoping:home')
+        return redirect('Shoping:home')
+    else:
+        return redirect('Shoping:login')

@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 خروج
 {% endblock %}
+
 {% block body %}
+<link rel="stylesheet" href="{% static 'css/logout.css' %}">
 <div class="container">
-    <div class="row">
+    <div class=" d-flex justify-content-center my-5">
         <form action="" method="POST">
             {% csrf_token %}
-            <button type="submit" class="btn btn-danger btn-sm btn-block">Logout</button>
+            <button type="submit" class="btn button">Logout</button>
         </form>
     </div>
 </div>
