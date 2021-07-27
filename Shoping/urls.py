@@ -7,7 +7,7 @@ app_name = 'Shoping'
 
 urlpatterns = [
     path('',views.Home_page,name='home'),
-    path('view/',views.contact_page,name='contact'),
+    # path('view/',views.contact_page,name='contact'),
     path('login/',views.login_page,name='login'),
     path('logout/',views.logout_page,name='logout'),
     path('register/',views.register_page,name='register'),
@@ -28,5 +28,8 @@ urlpatterns = [
     path('category/',views.product_category,name='category'),
 
     path('contact-us/',views.ContactPage,name='contact'),
-    path('about-us/',views.AboutPage,name='about')
+    path('about-us/',views.AboutPage,name='about'),
+
+    # order
+    path('add-user-order',views.add_user_order)
 ]

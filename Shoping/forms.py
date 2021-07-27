@@ -104,3 +104,14 @@ class ContactUsForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder':'ایمیل خودرا وارد کنید'}),label='ایمیل',validators=[validators.EmailValidator(message='ایمیل وارد شده اشتباه است')])
     text = forms.CharField(widget=forms.Textarea(attrs={'placeholder':'متن پیام خود را وارد کنید ...'}),label='متن پیام ')
     
+
+
+# form for order-user
+class UserNewOrderForm(forms.Form):
+    product_id = forms.IntegerField(
+        widget=forms.HiddenInput()
+    )
+    count = forms.IntegerField(
+        widget=forms.NumberInput(),
+        initial=1
+    )

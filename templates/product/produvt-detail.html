@@ -19,6 +19,14 @@
         <span><span class="dolar"></span>{{ product.price }} تومان</span>   
     </div>
 
+    <div class="">
+        <form action="/add-user-order" method="POST">
+            {% csrf_token %}
+            {{new_order_form}}
+            <button type="submit" class="button btn btn-sm mb-1">افزودن به سبد خرید</button>
+        </form>
+    </div>
+
     {% if gallery %}
     <div class="gallery col-md-4">
         <p class="text-center text-light mb-4">عکس های مربوطه</p>

@@ -1,4 +1,6 @@
+from os import cpu_count
 import django
+from django.contrib.auth.decorators import login_required
 from django.db import reset_queries
 from django.db.models.signals import pre_save
 from django.shortcuts import render,redirect,get_list_or_404
@@ -6,7 +8,7 @@ from django.http import Http404, request
 from django import forms
 
 # imports forms.py
-from .forms import ContactForm,LoginForm,RegisterForm,ContactUsForm
+from .forms import ContactForm,LoginForm,RegisterForm,ContactUsForm,UserNewOrderForm
 
 # imports for user
 from django.contrib.auth import authenticate,login,get_user_model,logout  # <-- register (get_user_model)
@@ -16,7 +18,7 @@ from django.views.generic import ListView
 from django.views.generic import DetailView
 
 # imports Product -> models.py
-from .models import Product,Tag,Category,Slider,Gallery,ContactUsModel,AboutUs
+from .models import Product,Tag,Category,Slider,Gallery,ContactUsModel,AboutUs,OrderDetail,Order
 
 
 import itertools
@@ -33,17 +35,17 @@ def Home_page(request):
 
 # -----------------------------
 
-def contact_page(request):
-    contact_form = ContactForm(request.POST or None)
-    if contact_form.is_valid():
-        print(contact_form.cleaned_data)
-        print(contact_form.cleaned_data.get('content'))
-    # if request.method == 'POST':
-        # print(request.POST.get('fullname'))
-    context = {
-        'contactform':contact_form
-    }
-    return render(request,'view.html',context)
+# def contact_page(request):
+#     contact_form = ContactForm(request.POST or None)
+#     if contact_form.is_valid():
+#         print(contact_form.cleaned_data)
+#         print(contact_form.cleaned_data.get('content'))
+#     # if request.method == 'POST':
+#         # print(request.POST.get('fullname'))
+#     context = {
+#         'contactform':contact_form
+#     }
+#     return render(request,'view.html',context)
 
 # -----------------------------
 
@@ -156,10 +158,13 @@ def group_list_image_gallery(num,list_show):
 
 
 def product_detail_view(request,pk):
+
     # handel error 404
     product = get_list_or_404(Product,id=pk)
     product = Product.objects.get(id=pk)
 
+    new_order_form = UserNewOrderForm(request.POST or None,initial={'product_id':pk})
+    
     # list tag haei eke vase har product set shode ro neshon mide
     # print(product.tag_set.all())
 
@@ -173,11 +178,12 @@ def product_detail_view(request,pk):
 
     gallery = Gallery.objects.filter(product_id=product)
     gallery_list = list(group_list_image_gallery(3,gallery))
-    print(gallery)
+    # print(gallery)
     context = {
         'product':product,
         'gallery':gallery_list,
-        'mahsolat_pisnahadi':grouped_mahsolat_pisnahadi
+        'mahsolat_pisnahadi':grouped_mahsolat_pisnahadi,
+        'new_order_form':new_order_form
         }
     return render(request,'product/produvt-detail.html',context)
 
@@ -234,3 +240,28 @@ def AboutPage(request):
     }
 
     return render(request,'aboutus.html',context)
+
+
+
+#---- Order
+# zamani mishe kharid kard ke user login bashe
+@login_required
+def add_user_order(request):
+    new_order_form = UserNewOrderForm(request.POST or None)
+    
+
+    if new_order_form.is_valid():
+        order = Order.objects.filter(owner_id=request.user.id, is_paid=False).first()
+        print(order)
+        if order is None:
+            order = Order.objects.create(owner_id=request.user.id,is_paid=False)
+        product_id = new_order_form.cleaned_data.get('product_id')
+        count = new_order_form.cleaned_data.get('count')
+        if count < 0:
+            count = 1
+        # product = Product.objects.get_by_id(product_id=product_id)
+        product = Product.objects.get_queryset().filter(id=product_id).first()
+        order.orderdetail_set.create(product_id=product.id,price=product.price, count=count)
+        
+    
+    return redirect('Shoping:home')

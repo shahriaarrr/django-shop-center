@@ -2,6 +2,8 @@ from posixpath import splitext
 from django.core.exceptions import MultipleObjectsReturned
 from django.db import models
 
+from django.contrib.auth.models import User
+
 from django.db.models import Q
 
 # imports for slug
@@ -149,3 +151,34 @@ class AboutUs(models.Model):
     class Meta:
         verbose_name_plural = 'درباره ما'
         verbose_name = 'درباره ما'
+
+
+# order
+class Order(models.Model):
+    owner = models.ForeignKey(User,on_delete=models.CASCADE)
+    is_paid = models.BooleanField(verbose_name='پرداخت شده / نشده')
+    payment_date = models.DateTimeField(blank=True,null=True,verbose_name='تاریخ پرداخت')
+
+    def __str__(self):
+        return self.owner
+    class Meta:
+        verbose_name_plural = 'سبد های خرید کاربران'
+        verbose_name = 'سبد خرید'
+
+
+
+
+class OrderDetail(models.Model):
+    order = models.ForeignKey(Order,on_delete=models.CASCADE,verbose_name='سبد خرید')
+    product = models.ForeignKey(Product,on_delete=models.CASCADE,verbose_name='محصول')
+    price = models.IntegerField(verbose_name='قیمت محصول')
+    count = models.IntegerField(verbose_name='تعداد')
+
+    def __str__(self):
+        return self.product
+
+    class Meta:
+        verbose_name_plural = 'اصلاعات جزئیات محصولات'
+        verbose_name = 'جزئیات محصول'
+
+    
