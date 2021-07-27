@@ -1,11 +1,6 @@
-from os import cpu_count
-import django
 from django.contrib.auth.decorators import login_required
-from django.db import reset_queries
-from django.db.models.signals import pre_save
 from django.shortcuts import render,redirect,get_list_or_404
-from django.http import Http404, request
-from django import forms
+from django.http import Http404
 
 # imports forms.py
 from .forms import ContactForm,LoginForm,RegisterForm,ContactUsForm,UserNewOrderForm

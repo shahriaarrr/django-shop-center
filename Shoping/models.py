@@ -160,7 +160,7 @@ class Order(models.Model):
     payment_date = models.DateTimeField(blank=True,null=True,verbose_name='تاریخ پرداخت')
 
     def __str__(self):
-        return self.owner
+        return str(self.owner)
         
     class Meta:
         verbose_name_plural = 'سبد های خرید کاربران'
@@ -176,7 +176,7 @@ class OrderDetail(models.Model):
     count = models.IntegerField(verbose_name='تعداد')
 
     def __str__(self):
-        return self.product
+        return str(self.product)
 
     class Meta:
         verbose_name_plural = 'اصلاعات جزئیات محصولات'
