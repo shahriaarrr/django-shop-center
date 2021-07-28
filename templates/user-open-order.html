@@ -8,10 +8,30 @@
 <div class="container">
 
     {% if order != None and details|length > 0 %}
-        <h1 class="text-warning">{{ order }}</h1>
+        <h5 class="text-warning my-5">{{ order }}</h5>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                  <th scope="col">محصول</th>
+                  <th scope="col">قیمت</th>
+                  <th scope="col">تعداد</th>
+                  <th scope="col">جمع کل</th>
+                  <th scope="col">تصویر</th>
+              </tr>
+            </thead>
+        </table>
         {% for i in details %}
-            <p class="text-success">{{ i.product.title }} - {{ i.product.price }}</p>
-            <img src="{{ i.product.image.url }}" alt="">
+        <table class="table">
+            <tbody >
+              <tr >
+                <td class="text-light">{{ i.product.title }}</td>
+                <td class="text-light">{{ i.product.price }}</td>
+                <td class="text-light">{{ i.count }}</td>
+                <td class="text-light">{{ i.sum_price }}</td>
+                <th scope="row"><img style="width: 100px;" src="{{ i.product.image.url }}" alt=""></th>
+              </tr>
+            </tbody>
+        </table>
         {% endfor %}
     {% else %}
         <div class="col-md-6 my-5">

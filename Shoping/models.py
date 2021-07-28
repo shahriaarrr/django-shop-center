@@ -178,6 +178,9 @@ class OrderDetail(models.Model):
     def __str__(self):
         return str(self.product)
 
+    def sum_price(self):
+        return self.count * self.price
+
     class Meta:
         verbose_name_plural = 'اصلاعات جزئیات محصولات'
         verbose_name = 'جزئیات محصول'
