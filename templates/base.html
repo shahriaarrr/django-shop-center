@@ -25,15 +25,18 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'Shoping:ProductList' %}">محصولات</a>
             </li>
-            {% if request.user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="#">پروفایل</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'Shoping:about' %}">درباره ما</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'Shoping:contact' %}">تماس با ما</a>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Shoping:openOrder' %}">سبد خرید</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">پروفایل</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'Shoping:logout' %}">خروج</a>

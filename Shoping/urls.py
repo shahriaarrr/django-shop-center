@@ -31,5 +31,8 @@ urlpatterns = [
     path('about-us/',views.AboutPage,name='about'),
 
     # order
-    path('add-user-order',views.add_user_order)
+    path('add-user-order',views.add_user_order),
+
+    # user open order
+    path('user-open-order/',views.user_open_order,name='openOrder')
 ]

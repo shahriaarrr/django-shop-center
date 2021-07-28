@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+سبد خرید
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    {% if order != None and details|length > 0 %}
+        <h1 class="text-warning">{{ order }}</h1>
+        {% for i in details %}
+            <p class="text-success">{{ i.product.title }} - {{ i.product.price }}</p>
+            <img src="{{ i.product.image.url }}" alt="">
+        {% endfor %}
+    {% else %}
+        <div class="col-md-6 my-5">
+            <p class="alert alert-warning text-center">هیچ محصولی در سبد خرید وجود ندارد</p>
+        </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}

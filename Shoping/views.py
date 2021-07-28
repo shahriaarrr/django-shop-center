@@ -255,3 +255,17 @@ def add_user_order(request):
             
         
         return redirect('Shoping:home')
+
+
+# sabad kharid
+def user_open_order(request):
+    context = {
+        'order':None,
+        'details':None
+    }
+    open_order:Order = Order.objects.filter(owner_id=request.user.id,is_paid=False).first()
+    if open_order is not None:
+        context['order'] = open_order
+        context['details'] = open_order.orderdetail_set.all()
+
+    return render(request,'user-open-order.html',context)
