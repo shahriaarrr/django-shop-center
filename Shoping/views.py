@@ -75,11 +75,9 @@ def login_page(request):
 # -----------------------------
 
 def logout_page(request):
-    if request.method == 'POST':
-        logout(request)
-        
-        return redirect('Shoping:home')
-    return render(request, 'logout.html',{})
+    logout(request)
+    return redirect('Shoping:home')
+
 
 # -----------------------------
 
