@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect,get_list_or_404
-from django.http import Http404
+from django.http import Http404,HttpResponse
 
 # imports forms.py
 from .forms import ContactForm,LoginForm,RegisterForm,ContactUsForm,UserNewOrderForm
@@ -17,6 +17,9 @@ from .models import Product,Tag,Category,Slider,Gallery,ContactUsModel,AboutUs,O
 
 
 import itertools
+
+from zeep import Client
+
 
 # -----------------------------
 
@@ -269,3 +272,33 @@ def user_open_order(request):
         context['details'] = open_order.orderdetail_set.all()
 
     return render(request,'user-open-order.html',context)
+
+
+
+# dargah pardakht
+MERCHANT = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
+amount = 1000  # Toman / Required
+description = "توضیحات مربوط به تراکنش را در این قسمت وارد کنید"  # Required
+email = 'email@example.com'  # Optional
+mobile = '09123456789'  # Optional
+client = Client('https://www.zarinpal.com/pg/services/WebGate/wsdl')
+CallbackURL = 'http://localhost:8000/verify/' # Important: need to edit for realy server.
+
+def send_request(request):
+    result = client.service.PaymentRequest(MERCHANT, amount, description, email, mobile, CallbackURL)
+    if result.Status == 100:
+        return redirect('https://www.zarinpal.com/pg/StartPay/' + str(result.Authority))
+    else:
+        return HttpResponse('Error code: ' + str(result.Status))
+
+def verify(request):
+    if request.GET.get('Status') == 'OK':
+        result = client.service.PaymentVerification(MERCHANT, request.GET['Authority'], amount)
+        if result.Status == 100:
+            return HttpResponse('Transaction success.\nRefID: ' + str(result.RefID))
+        elif result.Status == 101:
+            return HttpResponse('Transaction submitted : ' + str(result.Status))
+        else:
+            return HttpResponse('Transaction failed.\nStatus: ' + str(result.Status))
+    else:
+        return HttpResponse('Transaction failed or canceled by user')

@@ -34,5 +34,9 @@ urlpatterns = [
     path('add-user-order',views.add_user_order),
 
     # user open order
-    path('user-open-order/',views.user_open_order,name='openOrder')
+    path('user-open-order/',views.user_open_order,name='openOrder'), 
+    
+    # dargah pardakht
+    path('request/',views.send_request,name='request'),
+    path('verify/',views.verify,name='verify')
 ]
