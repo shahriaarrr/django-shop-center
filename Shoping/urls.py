@@ -38,5 +38,10 @@ urlpatterns = [
     
     # dargah pardakht
     path('request/',views.send_request,name='request'),
-    path('verify/',views.verify,name='verify')
+    path('verify/',views.verify,name='verify'),
+
+    #profile
+    path('profile/',views.profile_user,name='profile'),
+    path('profile/edit',views.edit_profile,name='edit-profile'),
+
 ]

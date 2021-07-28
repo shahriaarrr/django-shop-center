@@ -1,9 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect,get_list_or_404
 from django.http import Http404,HttpResponse
+from django.urls.conf import path
 
 # imports forms.py
-from .forms import ContactForm,LoginForm,RegisterForm,ContactUsForm,UserNewOrderForm
+from .forms import ContactForm,LoginForm,RegisterForm,ContactUsForm,UserNewOrderForm,EditProfileForm
 
 # imports for user
 from django.contrib.auth import authenticate,login,get_user_model,logout  # <-- register (get_user_model)
@@ -302,3 +303,34 @@ def verify(request):
             return HttpResponse('Transaction failed.\nStatus: ' + str(result.Status))
     else:
         return HttpResponse('Transaction failed or canceled by user')
+
+
+
+
+@login_required(login_url='Shoping:login')
+def profile_user(request):
+
+    context = {}
+    return render(request,'profile.html',context)
+
+
+@login_required(login_url='Shoping:login')
+def edit_profile(request):
+    user_id = request.user.id
+    user = User.objects.get(id=user_id)
+    if user is None:
+        raise Http404('کاربر مورد نظر یافت نشد')
+
+    edit_profile_form = EditProfileForm(request.POST or None,initial={'first_name':user.first_name,'last_name':user.last_name})
+    if edit_profile_form.is_valid():
+        first_name = edit_profile_form.cleaned_data.get('first_name')
+        last_name = edit_profile_form.cleaned_data.get('last_name')
+        user.first_name = first_name
+        user.last_name = last_name
+        user.save()
+
+    context = {
+        'edit_form':edit_profile_form
+    }
+
+    return render(request,'edit-profile.html',context)

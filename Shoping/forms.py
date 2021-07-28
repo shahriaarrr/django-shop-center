@@ -115,3 +115,8 @@ class UserNewOrderForm(forms.Form):
         widget=forms.NumberInput(),
         initial=1
     )
+
+class EditProfileForm(forms.Form):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'لطفا نام  خود را وارد کنید'}),label='نام   ',validators=[validators.MaxLengthValidator(150,message='نام و نام خانوادگی شما نمیتواند بیشتر از 150 کاراکتر باشد')])
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'لطفا نام خانوادگی خود را وارد کنید'}),label='  نام خانوادگی',validators=[validators.MaxLengthValidator(150,message='نام و نام خانوادگی شما نمیتواند بیشتر از 150 کاراکتر باشد')])
+    

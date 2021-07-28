@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+پروفایل
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+
+        </div>
+
+        <div class="col-md-4 my-5">
+            <ul class="list-group">
+                <li class="list-group-item active" aria-current="true">پنل کاربری</li>
+                <li class="list-group-item"><a href="{% url 'Shoping:profile' %}" class="btn btn-link">پروفایل</a></li>
+                <li class="list-group-item"><a href="{% url 'Shoping:edit-profile' %}" class="btn btn-link">ویرایش اطلاعات</a></li>
+                <li class="list-group-item"><a href="{% url 'Shoping:logout' %}" class="btn btn-link">خروج</a></li>
+
+              </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
