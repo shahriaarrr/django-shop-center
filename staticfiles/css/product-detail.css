@@ -20,9 +20,12 @@
 }
 
 .card-detail p{
-    color: #0b525b;
+    color: #fff;
 }
 
+.card-detail .text-history{
+    color: #0b525b;
+}
 
 .container .button{
     width: 150px;
@@ -82,7 +85,7 @@ input[type='number']{
     background-color: rgba(255, 255, 255, 0);
     border: 1px #0b525b solid; 
     font-family: cursive;
-    color: #0b525b;
+    color: #fff;
 }
 
 .card .history{
