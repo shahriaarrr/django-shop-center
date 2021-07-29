@@ -2,12 +2,15 @@
     border: 1px #0b525b solid;
     background-color: #272640;
     box-shadow: 5px 5px 20px #072f33;
+    border-radius: 100px;
 
 
 }
 
 .card-detail img{
     width: 100%;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
 }
 
 .card-detail h2{
@@ -51,6 +54,8 @@ span{
 .container .mahsolat-pishnahadi{
     border: 1px #0b525b solid;
     box-shadow: 5px 5px 20px #072f33;
+    border-radius: 100px;
+
 }
 
 
@@ -59,4 +64,29 @@ span{
     width: 120px;
     height: 120px;
     margin-bottom: 30px;
+    margin-left: 50px;
+    border-radius: 100px;
+
+}
+
+label[for="id_count"]
+{
+    display:none;
+}
+
+input[type='number']{
+    width: 50px;
+    height: 30px;
+    outline: none;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px #0b525b solid; 
+    font-family: cursive;
+    color: #0b525b;
+}
+
+.card .history{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
 }
