@@ -106,8 +106,6 @@ class Tag(models.Model):
         verbose_name = 'تگ'
 
 
-
-
 class Slider(models.Model):
     title = models.CharField(max_length=150)
     link = models.URLField(max_length=150)
@@ -116,6 +114,10 @@ class Slider(models.Model):
     
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name_plural = 'اسلایدرها'
+        verbose_name = 'اسلایدر'
 
     
 # Gallery for product
@@ -126,6 +128,11 @@ class Gallery(models.Model):
  
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name_plural = 'گالری ها'
+        verbose_name = 'گالری'
+
 
 
 

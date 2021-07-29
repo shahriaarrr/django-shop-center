@@ -9,6 +9,8 @@ input{
     font-family: cursive;
     border-bottom: 1px #0b525b solid; 
     color: #0b525b;
+    text-align: center;
+
 }
 
 textarea {
@@ -23,7 +25,9 @@ textarea {
     border: 1px #0b525b solid; 
     height: 100%;
     color: #0b525b;
-
+    border-radius: 50px;
+    text-align: center;
+    padding: 20px;
 }
 
 form .error {
@@ -51,5 +55,5 @@ form .error {
     margin-top: 100px;
     box-shadow: 5px 5px 20px #072f33;
     border: 1px #0b525b solid; 
-
+    border-radius: 50px;
 }
